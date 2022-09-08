@@ -1,0 +1,68 @@
+﻿@model PaginatedList<Item> 
+@{
+    ViewData["Title"] = "Home Page";
+    string itemLabel = "";
+}
+
+
+<div class="card-group">
+    @foreach (var item in Model)
+    {
+        itemLabel = item.ItemLabel;
+        if (itemLabel.Length > 30)
+        {
+            itemLabel = itemLabel.Substring(0, 30)+"...";
+        }
+
+        var photoPath = "~/Images/" + (item.PhotoPath ?? "notfound.png");
+        <div class="card border-0 m-3" style="min-width:18rem;max-width:30.5%;">
+            <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
+                <img class="mx-auto d-block card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+            </a>
+            <div class="align-self-center" >
+                <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
+                    <h4 class="itemLabel">@itemLabel</h4>
+                </a>                <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
+
+                    <h6 class="itemPrice">@item.Price EGP</h6>
+                </a>
+                @if (User.IsInRole("admin"))
+                {
+                    <a class="btn btn-danger" asp-controller="Item" asp-action="EditItem" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger" asp-controller="Item" asp-action="DeleteItem" asp-route-id="@item.Id">Delete</a>
+
+                }
+            </div>
+          
+
+        </div>
+    }
+</div>
+
+@{
+    var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.NextPage ? "disabled" : "";
+    var isActive = "";
+}
+
+@*<a asp-action="All" asp-route-pageNumber="@(Model.PageIndex-1)"
+   class="btn btn-dark @prevDisabled">Previous</a>*@
+
+@*<a asp-action="All" asp-route-pageNumber="@(Model.PageIndex+1)" class="btn btn-dark @nextDisabled">Next</a>*@
+
+<nav aria-label="Page navigation example"  >
+    <ul class="pagination justify-content-center ">
+        <li class="page-item @prevDisabled"><a class="page-link @prevDisabled" asp-action="All" asp-route-pageNumber="@(Model.PageIndex-1)">Previous</a></li>
+        @for (var i=1;i<=Model.TotalPages;i++)
+        {
+            if (Model.PageIndex == i)
+            {
+                isActive = "active";
+            }
+            <li class="page-item @isActive"><a class="page-link" asp-action="All" asp-route-pageNumber="@i">@i</a></li>
+            isActive = "";
+
+        }
+        <li class="page-item @nextDisabled"><a class="page-link" asp-action="All" asp-route-pageNumber="@(Model.PageIndex+1)">Next</a></li>
+    </ul>
+</nav>

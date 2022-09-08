@@ -1,0 +1,38 @@
+﻿@using ClothingStoreV2.ViewModels
+@model List<ClothingStoreV2.ViewModels.PurchaseViewModel>
+
+@{
+    ViewBag.Tite = "My Cart";
+    var totalprice = 0;
+}
+
+    @foreach (PurchaseViewModel item in Model)
+    {
+
+
+        if(item.quantity>0){
+            var photoPath = "~/Images/" + (item.photoPath ?? "notfound.png");
+            var itemTotalPrice = item.price * item.quantity;
+            totalprice += (int)itemTotalPrice;
+            <div class="row justify-content-center m-3">
+                <div class="col-sm-8">
+                    <div class="card custom-card">
+
+                            <img class="card-img-top imageBuyThumbnail" src="@photoPath" asp-append-version="true" />
+                            <div class="card-body text-center">
+                                <h3>@item.itemLabel</h3>
+                                <h4 class="itemPrice" style="margin-top: 80px;">Price : @item.price EGP</h4>
+                                <br />
+                                <h3>Quantity : <a class="btn btn-outline-dark" style="font-size: 20px;font-weight: 700" asp-action="decreaseQuantity" asp-route-id="@item.itemId">-</a> @item.quantity <a class="btn btn-dark" style="font-size: 20px;font-weight: 700" asp-action="increaseQuantity" asp-route-id="@item.itemId">+</a> </h3>
+                                <br /><h4>Total Price: @itemTotalPrice</h4>
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+        }
+    }
+<div class="text-center">
+    <h2 class="text-center">Total Price: @totalprice EGP  </h2>
+    <a asp-controller="Purchase" asp-action="CheckOut" class="btn btn-dark align-self-center">Checkout</a>
+</div>

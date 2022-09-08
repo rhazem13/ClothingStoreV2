@@ -1,0 +1,27 @@
+﻿@model ClothingStoreV2.ViewModels.ItemBuyViewModel
+@{
+    var photoPath = "~/Images/" + (Model.PhotoPath ?? "notfound.png");
+    var myqanitity = 0;
+}
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card custom-card">
+
+            <img class="card-img-top imageBuyThumbnail" src="@photoPath" asp-append-version="true" />
+
+                <div class="card-body text-center">
+                    <form asp-controller="Purchase" asp-action="Add" asp-route-id="@Model.itemId" asp-route-quantity="@Model.quantity" method="post">
+                        <h3 >@Model.ItemLabel</h3>
+                        <h4 class="itemPrice" style="margin-top: 80px;">Price: @Model.itemPrice EGP</h4>
+                        <label asp-for="quantity" style="margin-top: 20px;">Quantity</label>
+                        <input asp-for="quantity" value="1"/>
+                        <div style="margin-top: 20px">
+                            <button class="btn btn-dark" type="submit">ADD TO CART</button>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-dark">Back</a>
+                        </div>
+                    </form>
+        </div>
+      
+        </div>
+    </div>
+</div>
