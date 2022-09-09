@@ -49,13 +49,26 @@ namespace ClothingStoreV2.Repositories
             return context.Categories.ToList();
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            var item = context.Items.Find(id);
-            string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", item.PhotoPath);
-            System.IO.File.Delete(filePath);
-            context.Items.Remove(item);
-            context.SaveChanges();
+            
+            try
+            {
+                var item = context.Items.Find(id);
+                if (context.PurchaseItems.Any(pi => pi.Item == item))
+                {
+                    return false;
+                }
+                string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", item.PhotoPath);
+                System.IO.File.Delete(filePath);
+                context.Items.Remove(item);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException)
+            {
+                return false;
+            }
         }
     }
 }

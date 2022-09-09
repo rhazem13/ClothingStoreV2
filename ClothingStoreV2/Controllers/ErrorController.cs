@@ -10,5 +10,10 @@ namespace ClothingStoreV2.Controllers
         {
             return View();
         }
+
+        public IActionResult InvalidDelete()
+        {
+            return View();
+        }
     }
 }

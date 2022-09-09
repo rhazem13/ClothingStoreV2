@@ -130,10 +130,17 @@ namespace ClothingStoreV2.Controllers
 
             return uniqueFileName;
         }
+
         public IActionResult DeleteItem(int id)
         {
-            itemRepository.Delete(id);
-            return RedirectToAction("Index");
+            if (itemRepository.Delete(id))
+            {
+        return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("InvalidDelete", "Error");
+            }
         }
        
     }

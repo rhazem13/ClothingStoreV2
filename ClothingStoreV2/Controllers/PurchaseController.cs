@@ -12,11 +12,13 @@ namespace ClothingStoreV2.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IPurchaseRepository _purchaseRepository;
+        private readonly IUserDatumRepository _userDatumRepository;
 
-        public PurchaseController(UserManager<IdentityUser> userManager,IPurchaseRepository purchaseRepository)
+        public PurchaseController(UserManager<IdentityUser> userManager,IPurchaseRepository purchaseRepository,IUserDatumRepository userDatumRepository)
         {
             _userManager = userManager;
             _purchaseRepository = purchaseRepository;
+            _userDatumRepository = userDatumRepository;
         }
 
 
@@ -24,6 +26,10 @@ namespace ClothingStoreV2.Controllers
         public async Task<IActionResult> Add(int id, short quantity)
         {
             var userIdentityId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!_userDatumRepository.userFilled(userIdentityId))
+            {
+                return RedirectToAction("FillData", "UserDatum");
+            }
             int userId = _purchaseRepository.GetUserId(userIdentityId);
             bool haspurchase = await _purchaseRepository.HasPurchase(userIdentityId);
             if (!haspurchase)

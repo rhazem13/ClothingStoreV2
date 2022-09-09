@@ -12,6 +12,6 @@ namespace ClothingStoreV2.Interfaces
         Item Update(Item itemChanges);
         List<Category> GetAllCategories();
 
-        void Delete(int id);
+        bool Delete(int id);
     }
 }
