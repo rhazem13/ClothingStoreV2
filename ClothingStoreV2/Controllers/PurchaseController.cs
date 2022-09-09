@@ -18,10 +18,7 @@ namespace ClothingStoreV2.Controllers
             _userManager = userManager;
             _purchaseRepository = purchaseRepository;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+
 
         [Authorize]
         public async Task<IActionResult> Add(int id, short quantity)

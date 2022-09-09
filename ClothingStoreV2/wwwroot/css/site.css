@@ -1,7 +1,6 @@
 html {
     font-size: 14px;
 }
-
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -12,7 +11,6 @@ html {
     position: relative;
     min-height: 100%;
 }
-
 body {
     margin-bottom: 60px;
 }
@@ -37,64 +35,49 @@ body {
 .fa-instagram.DarkBrands :hover {
     color: #bc2a8d;
 }
-
 .fa-youtube.DarkBrands :hover {
     color: #FF0000;
 }
 .fa-linkedin.DarkBrands :hover {
     color: #0e76a8;
 }
-
 .imageThumbnail {
     width: 224px;
     height: 336px;
     width: auto;
 }
 
+
 .imageBuyThumbnail {
     width: 315px;
     height: 472px;
 }
-
 .navbar {
     background-color: #000000;
     padding: 0;
     font-size: 16px;
 }
-
-    .navbar .navbar-brand {
+.navbar .navbar-brand {
         color: #ffffff;
         font-size: 30px;
         font-weight: 500;
-    }
-
-        .navbar .navbar-brand:hover,
-        .navbar .navbar-brand:focus {
-        }
-
-
-
-    .navbar .navbar-nav .nav-link {
-    }
-
-    .navbar .navbar-nav .nav-item {
+}
+.navbar .navbar-nav .nav-item {
         color: red !important;
     }
-
-.firstnav {
-}
-
 .navCat {
     font-size: 20px;
     font-weight: 500;
     margin: .1em 2em .0em 2em;
 }
-
+.activenavcat {
+    background: white;
+    color: black !important;
+}
 .navbar .navbar-nav .nav-link:not(.disabled):hover,
 .navbar .navbar-nav .nav-link:not(.disabled):focus {
     color: #000000;
 }
-
 .navbar .navbar-nav .nav-item.active .nav-link,
 .navbar .navbar-nav .nav-item.active .nav-link:hover,
 .navbar .navbar-nav .nav-item.active .nav-link:focus,
@@ -104,33 +87,27 @@ body {
     color: #000000;
     background-color: #f9f3f3;
 }
-
 .navbar .navbar-toggler {
     border-color: #f9f3f3;
 }
-
-    .navbar .navbar-toggler:hover,
+.navbar .navbar-toggler:hover,
     .navbar .navbar-toggler:focus {
         background-color: #f9f3f3;
     }
-
-    .navbar .navbar-toggler .navbar-toggler-icon {
+.navbar .navbar-toggler .navbar-toggler-icon {
         color: #ffffff;
     }
-
 .navbar .navbar-collapse,
 .navbar .navbar-form {
     border-color: #ffffff;
 }
-
 .navbar .navbar-link {
     color: #ffffff;
+    
 }
-
-    .navbar .navbar-link:hover {
+.navbar .navbar-link:hover {
         color: #000000;
     }
-
 @media (max-width: 575px) {
     .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {
         color: #ffffff;
@@ -146,7 +123,6 @@ body {
             background-color: #f9f3f3;
         }
 }
-
 @media (max-width: 767px) {
     .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item {
         color: #ffffff;
@@ -162,7 +138,6 @@ body {
             background-color: #f9f3f3;
         }
 }
-
 @media (max-width: 991px) {
     .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {
         color: #ffffff;
@@ -178,7 +153,6 @@ body {
             background-color: #f9f3f3;
         }
 }
-
 @media (max-width: 1199px) {
     .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item {
         color: #ffffff;
@@ -194,56 +168,45 @@ body {
             background-color: #f9f3f3;
         }
 }
-
 .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item {
     color: #ffffff;
 }
-
-    .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,
     .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:focus {
         color: #000000;
     }
-
-    .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
         color: #000000;
         background-color: #f9f3f3;
     }
-
 .navbar .navbar-nav .nav-item .nav-link {
     color: #ffffff;
     padding: 7px 8px 8px 8px;
     padding-right: 50px;
     padding-left: 50px;
 }
-
-
-    .navbar .navbar-nav .nav-item .nav-link:hover {
+.navbar .navbar-nav .nav-item .nav-link:hover {
         color: #000000;
         background-color: #ffffff;
     }
-
-    .navbar .navbar-nav .nav-item .nav-link :active {
+.navbar .navbar-nav .nav-item .nav-link :active {
         color: #000000;
         background-color: #ffffff;
     }
-
 .itemLabel {
     font-size: 16px;
     height: 1.5rem;
     font-weight: 400;
     color: black;
 }
-
 .itemPrice {
     color: black;
     font-weight: 700;
 }
-
 .custom-card {
     flex-direction: row !important;
     margin-top: 40px;
 }
-
 .suitsContainer {
     margin-top: -30px;
     position: relative;
@@ -251,7 +214,6 @@ body {
     color: white;
     -webkit-filter: brightness(100%);
 }
-
 .suitsContainerCentered {
     padding: 50px 90px 50px 90px;
     position: absolute;
@@ -264,7 +226,6 @@ body {
 .suitsContainer .suitsContainerCentered .h2 {
     font-size: 200px !important;
 }
-
 .suitsContainer :hover {
     -webkit-filter: brightness(70%);
     -webkit-transition: all 1s ease;
@@ -274,8 +235,6 @@ body {
     transition: all 1s ease;
 }
 /*--------------------------------------------------------------------------------------------*/
-
-
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -288,23 +247,18 @@ body {
     min-height: 100vh;
     margin-bottom: 100px;
 }
-
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
 a {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease;
 }
-
-    a, a:hover {
+a, a:hover {
         text-decoration: none !important;
     }
-
-
 
 .footer-14398 {
     margin-bottom: -150px;

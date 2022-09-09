@@ -50,7 +50,7 @@ namespace ClothingStoreV2.Controllers
         public async Task<IActionResult> BrowseCategory(int id,int pageNumber=1)
         {
             IQueryable<Item> items = _itemRepository.GetByCategory(id);
-
+            ViewBag.CategoryId = id;
             return View(await PaginatedList<Item>.CreateAsync(items, pageNumber, 12));
         }
         public IActionResult Privacy()
