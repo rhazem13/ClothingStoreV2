@@ -4,66 +4,120 @@
     ViewData["Active"] = "Home";
     string itemLabel = "";
 }
+    <div class="row">
+        <div class="col-lg-3 col-12">
+            <form asp-controller="Home" asp-action="All" style="width: 100%" class="align-content-center text-center">
 
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="What are you looking for?" aria-label="What are you looking for?" name="SearchString" aria-describedby="button-addon2">
+                    <button type="submit" class="btn btn-primary "  id="button-addon2">Search</button>
+                </div>
+            </form>
 
-<div class="card-group">
-    @foreach (var item in Model)
-    {
-        itemLabel = item.ItemLabel;
-        if (itemLabel.Length > 30)
-        {
-            itemLabel = itemLabel.Substring(0, 30)+"...";
-        }
+            @*<div class="row">
+                <input class="col-8" type="text" placeholder="What are you looking for?" name="SearchString" />
+                <button type="submit" class="fa fa-search" style="color: white; background: black;"></button>
+            </div>*@
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Categories
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                        <div class="accordion-body">
 
-        var photoPath = "~/Images/" + (item.PhotoPath ?? "notfound.png");
-        <div class="card border-0 m-3" style="min-width:18rem;max-width:30.5%;">
-            <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
-                <img class="mx-auto d-block card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
-            </a>
-            <div class="align-self-center" >
-                <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
-                    <h4 class="itemLabel">@itemLabel</h4>
-                </a>                <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
-
-                    <h6 class="itemPrice">@item.Price EGP</h6>
-                </a>
-                @if (User.IsInRole("admin"))
-                {
-                    <a class="btn btn-danger" asp-controller="Item" asp-action="EditItem" asp-route-id="@item.Id">Edit</a>
-                    <a class="btn btn-danger" asp-controller="Item" asp-action="DeleteItem" asp-route-id="@item.Id">Delete</a>
-
-                }
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item ">
+                                    <a class="nav-link active firstnav" id="Home" asp-controller="Home" asp-action="All">All</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link " id="Category1" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="1">SUITS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="Category2" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="2">SHIRTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="Category3" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="3">JEANS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="Category4" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="4">SPORTSWEAR</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="Category5" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="5">SHOES</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          
 
         </div>
-    }
-</div>
+        <div class="col-lg-9 col-12">
+            <div class="card-group ">
+                @foreach (var item in Model)
+                {
+                    itemLabel = item.ItemLabel;
+                    if (itemLabel.Length > 30)
+                    {
+                        itemLabel = itemLabel.Substring(0, 30) + "...";
+                    }
 
-@{
-    var prevDisabled = !Model.PreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.NextPage ? "disabled" : "";
-    var isActive = "";
-}
+                    var photoPath = "~/Images/" + (item.PhotoPath ?? "notfound.png");
+                    <div class="card border-0 m-3 p-0 m-0 mx-auto" style="min-width:18rem;max-width:30.5%;">
+                        <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
+                            <img class="mx-auto d-block card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                        </a>
+                        <div class="align-self-center">
+                            <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
+                                <h4 class="itemLabel">@itemLabel</h4>
+                            </a>                <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
+                                <h6 class="itemPrice">@item.Price EGP</h6>
+                            </a>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <a class="btn btn-danger" asp-controller="Item" asp-action="EditItem" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-danger" asp-controller="Item" asp-action="DeleteItem" asp-route-id="@item.Id">Delete</a>
 
-@*<a asp-action="All" asp-route-pageNumber="@(Model.PageIndex-1)"
-   class="btn btn-dark @prevDisabled">Previous</a>*@
+                            }
+                        </div>
 
-@*<a asp-action="All" asp-route-pageNumber="@(Model.PageIndex+1)" class="btn btn-dark @nextDisabled">Next</a>*@
 
-<nav aria-label="Page navigation example"  >
-    <ul class="pagination justify-content-center ">
-        <li class="page-item @prevDisabled"><a class="page-link @prevDisabled" asp-action="All" asp-route-pageNumber="@(Model.PageIndex-1)">Previous</a></li>
-        @for (var i=1;i<=Model.TotalPages;i++)
-        {
-            if (Model.PageIndex == i)
-            {
-                isActive = "active";
+                    </div>
+                }
+            </div>
+            @{
+                var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.NextPage ? "disabled" : "";
+                var isActive = "";
             }
-            <li class="page-item @isActive"><a class="page-link" asp-action="All" asp-route-pageNumber="@i">@i</a></li>
-            isActive = "";
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center ">
+                    <li class="page-item @prevDisabled"><a class="page-link @prevDisabled" asp-action="All" asp-route-pageNumber="@(Model.PageIndex-1)">&laquo;</a></li>
+                    @for (var i = 1; i <= Model.TotalPages; i++)
+                    {
+                        if (Model.PageIndex == i)
+                        {
+                            isActive = "active";
+                        }
+                        <li class="page-item @isActive"><a class="page-link" asp-action="All" asp-route-pageNumber="@i">@i</a></li>
+                        isActive = "";
 
-        }
-        <li class="page-item @nextDisabled"><a class="page-link" asp-action="All" asp-route-pageNumber="@(Model.PageIndex+1)">Next</a></li>
-    </ul>
-</nav>
+                    }
+                    <li class="page-item @nextDisabled"><a class="page-link" asp-action="All" asp-route-pageNumber="@(Model.PageIndex+1)">&raquo;</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+
+    @*<a asp-action="All" asp-route-pageNumber="@(Model.PageIndex-1)"
+        class="btn btn-dark @prevDisabled">Previous</a>*@
+
+    @*<a asp-action="All" asp-route-pageNumber="@(Model.PageIndex+1)" class="btn btn-dark @nextDisabled">Next</a>*@
+   
+    </div>
+  
+    

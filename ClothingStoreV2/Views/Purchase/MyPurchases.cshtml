@@ -5,18 +5,43 @@
     ViewBag.Tite = "My Cart";
     var totalprice = 0;
 }
+<div class="row justify-content-center ">
+<div class="col-8">
 
     @foreach (PurchaseViewModel item in Model)
     {
 
 
-        if(item.quantity>0){
+        if (item.quantity > 0)
+        {
             var photoPath = "~/Images/" + (item.photoPath ?? "notfound.png");
             var itemTotalPrice = item.price * item.quantity;
             totalprice += (int)itemTotalPrice;
-            <div class="row justify-content-center m-3">
-                <div class="col-sm-8">
-                    <div class="card custom-card">
+            <div class=" justify-content-center m-3">
+                <div class="card border-1 custom-card  " style="padding: 0;">
+                    <div class="row ">
+                        <div class="col m-auto    text-md-start text-center">
+                            <img class="card-img-top " style="width: auto; height: 450px;" src="@photoPath" asp-append-version="true" />
+                        </div>
+                        <div class="col m-auto w-auto">
+                            <div class="card-body text-center align-self-center">
+                                <h3>@item.itemLabel</h3>
+                                <h4 class="itemPrice" style="margin-top: 80px;">Price : @item.price EGP</h4>
+                                <br />
+                                <h3>
+                                    Quantity<br /><br />
+                                    <a class="btn btn-outline-primary" style="font-size: 20px;font-weight: 700" asp-action="decreaseQuantity" asp-route-id="@item.itemId">-</a> @item.quantity <a class="btn btn-primary" style="font-size: 20px;font-weight: 700" asp-action="increaseQuantity" asp-route-id="@item.itemId">+</a>
+                                </h3>
+                                <br /><h4>Total Price: @itemTotalPrice</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            @*<div class="row justify-content-center m-3">
+                    <div class="col-sm-8">
+                        <div class="card custom-card">
 
                             <img class="card-img-top imageBuyThumbnail" src="@photoPath" asp-append-version="true" />
                             <div class="card-body text-center">
@@ -26,13 +51,14 @@
                                 <h3>Quantity : <a class="btn btn-outline-dark" style="font-size: 20px;font-weight: 700" asp-action="decreaseQuantity" asp-route-id="@item.itemId">-</a> @item.quantity <a class="btn btn-dark" style="font-size: 20px;font-weight: 700" asp-action="increaseQuantity" asp-route-id="@item.itemId">+</a> </h3>
                                 <br /><h4>Total Price: @itemTotalPrice</h4>
                             </div>
-                       
+
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div>*@
         }
     }
-<div class="text-center">
-    <h2 class="text-center">Total Price: @totalprice EGP  </h2>
-    <a asp-controller="Purchase" asp-action="CheckOut" class="btn btn-dark align-self-center">Checkout</a>
-</div>
+    <div class="text-center">
+        <h2 class="text-center">Total Price: @totalprice EGP  </h2>
+        <a asp-controller="Purchase" asp-action="CheckOut" class="btn btn-primary align-self-center">Checkout</a>
+    </div>
+    </div></div>

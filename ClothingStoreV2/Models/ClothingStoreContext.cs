@@ -27,8 +27,11 @@ namespace ClothingStoreV2.Models
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 //optionsBuilder.UseSqlServer("Server=HAZEM;Database=ClothingStore;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer(
+                //    "Server=tcp:rhazem13.database.windows.net,1433;Initial Catalog=ClothingStore;Persist Security Info=False;User ID=rhazem13;Password=Hazm1102001;MultipleActiveResultSets=False;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Integrated Security=False;");
                 optionsBuilder.UseSqlServer(
-                    "Server=tcp:rhazem13.database.windows.net,1433;Initial Catalog=ClothingStore;Persist Security Info=False;User ID=rhazem13;Password=Hazm1102001;MultipleActiveResultSets=False;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Integrated Security=False;");
+                    "Server=ec2-54-82-205-3.compute-1.amazonaws.com;Port=5432;Database=dc10jd3qvoa1ar;User Id=dbverjjecbcifw;Password=bce0cef6fe5b61734d2808dd8057389075099ae536008ce70a37db6e2ce87d5a;sslmode=Require;TrustServerCertificate=True;"
+                );
             }
         }
 
@@ -56,7 +59,7 @@ namespace ClothingStoreV2.Models
 
             modelBuilder.Entity<Purchase>(entity =>
             {
-                entity.Property(e => e.PurchaseDate).HasColumnType("datetime");
+               // entity.Property(e => e.PurchaseDate).HasColumnType("datetime");
 
                 entity.Property(e => e.TotalPrice).HasColumnType("decimal(18, 0)");
 

@@ -16,8 +16,12 @@ var connectionString = builder
 
 //builder.Services.AddDbContext<ClothingStore_IdentityContext>(options =>
 //   options.UseSqlServer(connectionString));
-builder.Services.AddDbContext<ClothingStoreContext>(options=>
-    options.UseSqlServer(connectionString),ServiceLifetime.Transient) ;
+//here use sql server
+//builder.Services.AddDbContext<ClothingStoreContext>(options=>
+//    options.UseSqlServer(connectionString),ServiceLifetime.Transient) ;
+// here use postgresql
+builder.Services.AddDbContext<ClothingStoreContext>(options =>
+    options.UseNpgsql(connectionString), ServiceLifetime.Transient);
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 //    .AddRoles<IdentityRole>()
 //    .AddEntityFrameworkStores<ClothingStore_IdentityContext>();
