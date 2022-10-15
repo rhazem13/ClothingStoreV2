@@ -60,7 +60,7 @@
                     {
                         itemLabel = itemLabel.Substring(0, 30) + "...";
                     }
-                    var photoPath = "~/Images/" + (item.PhotoPath ?? "notfound.png");
+                    var photoPath = "~/images/" + (item.PhotoPath ?? "notfound.png");
                     <div class="card  m-3 border-0 mx-auto" style="min-width:18rem;max-width:30.5%;">
                         <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
                             <img class="mx-auto d-block card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
