@@ -68,7 +68,8 @@ header {
     .nav-menu li a {
         color: #fff;
         text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 200;
         padding: 0 15px;
     }
         .nav-menu li a:hover {
