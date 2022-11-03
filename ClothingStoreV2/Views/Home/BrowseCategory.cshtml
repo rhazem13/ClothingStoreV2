@@ -54,10 +54,7 @@
                 @foreach (var item in Model)
                 {
                     itemLabel = item.ItemLabel;
-                    if (itemLabel.Length > 30)
-                    {
-                        itemLabel = itemLabel.Substring(0, 30) + "...";
-                    }
+                    itemLabel = string.Join(" ", itemLabel.Split().Take(3));
                     var photoPath = "~/images/" + (item.PhotoPath ?? "notfound.png");
                     <div class="card  m-3 border-0 mx-auto" style="min-width:18rem;max-width:30.5%;">
                         <a asp-controller="item" asp-action="Buy" asp-route-id="@item.Id" style=" text-decoration: none; ">
