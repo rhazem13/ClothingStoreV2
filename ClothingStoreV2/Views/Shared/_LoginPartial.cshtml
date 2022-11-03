@@ -3,7 +3,6 @@
 @using ClothingStoreV2.Repositories
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using System.Security.Claims
-
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @inject IUserDatumRepository userDatumRepository
@@ -12,7 +11,6 @@
     {
         @if(!User.IsInRole("admin"))
         {
-
         @if (!userDatumRepository.userFilled(User.FindFirstValue(ClaimTypes.NameIdentifier)))
         {
             <li class="nav-item">
@@ -31,7 +29,6 @@
             <li class="nav-item">
                 <a class="nav-link " asp-controller="Item" asp-action="CreateItem">Create Items</a>
             </li>
-
         }
         <li class="nav-item">
             <a id="manage" class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Account <i class="fa fa-user"></i></a>
@@ -41,7 +38,6 @@
                 <button id="logout" type="submit" class="nav-link btn btn-link ">Logout <i class="fa fa-sign-out-alt"></i></button>
             </form>
         </li>
-
     }
     else
     {

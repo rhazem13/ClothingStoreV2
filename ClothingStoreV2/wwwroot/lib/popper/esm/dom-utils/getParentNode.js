@@ -5,7 +5,6 @@ export default function getParentNode(element) {
   if (getNodeName(element) === 'html') {
     return element;
   }
-
   return (// this is a quicker (but less type safe) way to save quite some bytes from the bundle
     // $FlowFixMe[incompatible-return]
     // $FlowFixMe[prop-missing]
@@ -14,6 +13,5 @@ export default function getParentNode(element) {
     isShadowRoot(element) ? element.host : null) || // ShadowRoot detected
     // $FlowFixMe[incompatible-call]: HTMLElement is a Node
     getDocumentElement(element) // fallback
-
   );
 }

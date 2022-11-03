@@ -2,13 +2,10 @@
 @{
     ViewBag.Title = "Complete Data";
 }
-
 <div class=" justify-content-center align-content-center  align-items-center align-self-center">
-
     <h2 class="text-center">Complete Data & Start shopping !</h2>
     <div class="justify-content-center align-content-center align-items-center">
-
-        <form asp-action="FillData" asp-controller="UserDatum" style="display: table; margin: 0 auto;" method="post">
+        <form asp-action="FillData" asp-controller="UserDatum"   style="display: table; margin: 0 auto;" method="post">
             <div class="row">
                 <div class="col-md-6 col-12"> <div class="form-group row">
                         <label asp-for="FirstName">FirstName</label>
@@ -60,7 +57,6 @@
                             <input asp-for="Age" class="form-control" placeholder="Age">
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label asp-for="Phone">Phone</label>
                         <div class="col-sm-10">
@@ -76,12 +72,10 @@
                             </select>
                         </div>
                     </div>
-                
             </div>
                 <div class="text-center"><br/>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div></div>
-
         </form>
     </div>
 </div>

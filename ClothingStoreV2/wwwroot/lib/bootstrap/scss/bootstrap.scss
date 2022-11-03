@@ -1,7 +1,5 @@
 @import "mixins/banner";
 @include bsBanner("");
-
-
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
@@ -9,7 +7,6 @@
 @import "maps";
 @import "mixins";
 @import "utilities";
-
 // Layout & components
 @import "root";
 @import "reboot";
@@ -42,10 +39,8 @@
 @import "spinners";
 @import "offcanvas";
 @import "placeholders";
-
 // Helpers
 @import "helpers";
-
 // Utilities
 @import "utilities/api";
 // scss-docs-end import-stack

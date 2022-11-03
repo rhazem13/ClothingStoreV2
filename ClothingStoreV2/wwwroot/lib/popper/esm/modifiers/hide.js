@@ -1,6 +1,5 @@
 import { top, bottom, left, right } from "../enums.js";
 import detectOverflow from "../utils/detectOverflow.js";
-
 function getSideOffsets(overflow, rect, preventedOffsets) {
   if (preventedOffsets === void 0) {
     preventedOffsets = {
@@ -8,7 +7,6 @@ function getSideOffsets(overflow, rect, preventedOffsets) {
       y: 0
     };
   }
-
   return {
     top: overflow.top - rect.height - preventedOffsets.y,
     right: overflow.right - rect.width + preventedOffsets.x,
@@ -16,13 +14,11 @@ function getSideOffsets(overflow, rect, preventedOffsets) {
     left: overflow.left - rect.width - preventedOffsets.x
   };
 }
-
 function isAnySideFullyClipped(overflow) {
   return [top, right, bottom, left].some(function (side) {
     return overflow[side] >= 0;
   });
 }
-
 function hide(_ref) {
   var state = _ref.state,
       name = _ref.name;
@@ -50,8 +46,6 @@ function hide(_ref) {
     'data-popper-escaped': hasPopperEscaped
   });
 } // eslint-disable-next-line import/no-unused-modules
-
-
 export default {
   name: 'hide',
   enabled: true,

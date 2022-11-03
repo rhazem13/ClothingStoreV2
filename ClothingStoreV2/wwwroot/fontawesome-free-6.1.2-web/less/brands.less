@@ -4,11 +4,9 @@
  * Copyright 2022 Fonticons, Inc.
  */
 @import "_variables.less";
-
 :root, :host {
   --@{fa-css-prefix}-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
 }
-
 @font-face {
   font-family: 'Font Awesome 6 Brands';
   font-style: normal;
@@ -17,13 +15,11 @@
   src: url('@{fa-font-path}/fa-brands-400.woff2') format('woff2'),
     url('@{fa-font-path}/fa-brands-400.ttf') format('truetype');
 }
-
 .fab,
 .@{fa-css-prefix}-brands {
   font-family: 'Font Awesome 6 Brands';
   font-weight: 400;
 }
-
 each(.fa-brand-icons(), {
   .@{fa-css-prefix}-@{key}:before { content: @value; }
 });

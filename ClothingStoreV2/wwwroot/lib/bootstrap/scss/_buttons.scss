@@ -1,7 +1,6 @@
 //
 // Base styles
 //
-
 .btn {
   // scss-docs-start btn-css-vars
   --#{$prefix}btn-padding-x: #{$btn-padding-x};
@@ -19,7 +18,6 @@
   --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
   --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
   // scss-docs-end btn-css-vars
-
   display: inline-block;
   padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
   font-family: var(--#{$prefix}btn-font-family);
@@ -38,14 +36,12 @@
   @include gradient-bg(var(--#{$prefix}btn-bg));
   @include box-shadow(var(--#{$prefix}btn-box-shadow));
   @include transition($btn-transition);
-
   &:hover {
     color: var(--#{$prefix}btn-hover-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
     background-color: var(--#{$prefix}btn-hover-bg);
     border-color: var(--#{$prefix}btn-hover-border-color);
   }
-
   .btn-check:focus + &,
   &:focus {
     color: var(--#{$prefix}btn-hover-color);
@@ -59,7 +55,6 @@
       box-shadow: var(--#{$prefix}btn-focus-box-shadow);
     }
   }
-
   .btn-check:checked + &,
   .btn-check:active + &,
   &:active,
@@ -71,7 +66,6 @@
     background-image: if($enable-gradients, none, null);
     border-color: var(--#{$prefix}btn-active-border-color);
     @include box-shadow(var(--#{$prefix}btn-active-shadow));
-
     &:focus {
       // Avoid using mixin so we can pass custom focus shadow properly
       @if $enable-shadows {
@@ -81,7 +75,6 @@
       }
     }
   }
-
   &:disabled,
   &.disabled,
   fieldset:disabled & {
@@ -94,12 +87,9 @@
     @include box-shadow(none);
   }
 }
-
-
 //
 // Alternate buttons
 //
-
 // scss-docs-start btn-variant-loops
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
@@ -126,19 +116,15 @@
     }
   }
 }
-
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
     @include button-outline-variant($value);
   }
 }
 // scss-docs-end btn-variant-loops
-
-
 //
 // Link buttons
 //
-
 // Make a button look and behave like a link
 .btn-link {
   --#{$prefix}btn-font-weight: #{$font-weight-normal};
@@ -153,34 +139,25 @@
   --#{$prefix}btn-disabled-border-color: transparent;
   --#{$prefix}btn-box-shadow: none;
   --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($primary), $primary, 15%))};
-
   text-decoration: $link-decoration;
-
   &:hover,
   &:focus {
     text-decoration: $link-hover-decoration;
   }
-
   &:focus {
     color: var(--#{$prefix}btn-color);
   }
-
   &:hover {
     color: var(--#{$prefix}btn-hover-color);
   }
-
   // No need for an active state here
 }
-
-
 //
 // Button Sizes
 //
-
 .btn-lg {
   @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
 }
-
 .btn-sm {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
 }

@@ -7,14 +7,11 @@
 .dropdown-center {
   position: relative;
 }
-
 .dropdown-toggle {
   white-space: nowrap;
-
   // Generate the caret automatically
   @include caret();
 }
-
 // The dropdown menu
 .dropdown-menu {
   // scss-docs-start dropdown-css-vars
@@ -44,7 +41,6 @@
   --#{$prefix}dropdown-header-padding-x: #{$dropdown-header-padding-x};
   --#{$prefix}dropdown-header-padding-y: #{$dropdown-header-padding-y};
   // scss-docs-end dropdown-css-vars
-
   position: absolute;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
@@ -60,13 +56,11 @@
   border: var(--#{$prefix}dropdown-border-width) solid var(--#{$prefix}dropdown-border-color);
   @include border-radius(var(--#{$prefix}dropdown-border-radius));
   @include box-shadow(var(--#{$prefix}dropdown-box-shadow));
-
   &[data-bs-popper] {
     top: 100%;
     left: 0;
     margin-top: var(--#{$prefix}dropdown-spacer);
   }
-
   @if $dropdown-padding-y == 0 {
     > .dropdown-item:first-child,
     > li:first-child .dropdown-item {
@@ -76,30 +70,23 @@
     > li:last-child .dropdown-item {
       @include border-bottom-radius(var(--#{$prefix}dropdown-inner-border-radius));
     }
-
   }
 }
-
 // scss-docs-start responsive-breakpoints
 // We deliberately hardcode the `bs-` prefix because we check
 // this custom property in JS to determine Popper's positioning
-
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
     .dropdown-menu#{$infix}-start {
       --bs-position: start;
-
       &[data-bs-popper] {
         right: auto;
         left: 0;
       }
     }
-
     .dropdown-menu#{$infix}-end {
       --bs-position: end;
-
       &[data-bs-popper] {
         right: 0;
         left: auto;
@@ -108,7 +95,6 @@
   }
 }
 // scss-docs-end responsive-breakpoints
-
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
@@ -118,12 +104,10 @@
     margin-top: 0;
     margin-bottom: var(--#{$prefix}dropdown-spacer);
   }
-
   .dropdown-toggle {
     @include caret(up);
   }
 }
-
 .dropend {
   .dropdown-menu[data-bs-popper] {
     top: 0;
@@ -132,7 +116,6 @@
     margin-top: 0;
     margin-left: var(--#{$prefix}dropdown-spacer);
   }
-
   .dropdown-toggle {
     @include caret(end);
     &::after {
@@ -140,7 +123,6 @@
     }
   }
 }
-
 .dropstart {
   .dropdown-menu[data-bs-popper] {
     top: 0;
@@ -149,7 +131,6 @@
     margin-top: 0;
     margin-right: var(--#{$prefix}dropdown-spacer);
   }
-
   .dropdown-toggle {
     @include caret(start);
     &::before {
@@ -157,8 +138,6 @@
     }
   }
 }
-
-
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
   height: 0;
@@ -167,7 +146,6 @@
   border-top: 1px solid var(--#{$prefix}dropdown-divider-bg);
   opacity: 1; // Revisit in v6 to de-dupe styles that conflict with <hr> element
 }
-
 // Links, buttons, and more within the dropdown menu
 //
 // `<button>`-specific styles are denoted with `// For <button>s`
@@ -183,21 +161,18 @@
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
-
   &:hover,
   &:focus {
     color: var(--#{$prefix}dropdown-link-hover-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
     @include gradient-bg(var(--#{$prefix}dropdown-link-hover-bg));
   }
-
   &.active,
   &:active {
     color: var(--#{$prefix}dropdown-link-active-color);
     text-decoration: none;
     @include gradient-bg(var(--#{$prefix}dropdown-link-active-bg));
   }
-
   &.disabled,
   &:disabled {
     color: var(--#{$prefix}dropdown-link-disabled-color);
@@ -207,11 +182,9 @@
     background-image: if($enable-gradients, none, null);
   }
 }
-
 .dropdown-menu.show {
   display: block;
 }
-
 // Dropdown section headers
 .dropdown-header {
   display: block;
@@ -221,14 +194,12 @@
   color: var(--#{$prefix}dropdown-header-color);
   white-space: nowrap; // as with > li > a
 }
-
 // Dropdown text
 .dropdown-item-text {
   display: block;
   padding: var(--#{$prefix}dropdown-item-padding-y) var(--#{$prefix}dropdown-item-padding-x);
   color: var(--#{$prefix}dropdown-link-color);
 }
-
 // Dark dropdowns
 .dropdown-menu-dark {
   // scss-docs-start dropdown-dark-css-vars

@@ -12,9 +12,6 @@ var defaultModifiers = [eventListeners, popperOffsets, computeStyles, applyStyle
 var createPopper = /*#__PURE__*/popperGenerator({
   defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
-
 export { createPopper, popperGenerator, defaultModifiers, detectOverflow }; // eslint-disable-next-line import/no-unused-modules
-
 export { createPopper as createPopperLite } from "./popper-lite.js"; // eslint-disable-next-line import/no-unused-modules
-
 export * from "./modifiers/index.js";

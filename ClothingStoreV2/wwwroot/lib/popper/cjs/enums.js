@@ -1,11 +1,8 @@
 /**
  * @popperjs/core v2.11.6 - MIT License
  */
-
 'use strict';
-
 Object.defineProperty(exports, '__esModule', { value: true });
-
 var top = 'top';
 var bottom = 'bottom';
 var right = 'right';
@@ -24,20 +21,16 @@ var variationPlacements = /*#__PURE__*/basePlacements.reduce(function (acc, plac
 var placements = /*#__PURE__*/[].concat(basePlacements, [auto]).reduce(function (acc, placement) {
   return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
 }, []); // modifiers that need to read the DOM
-
 var beforeRead = 'beforeRead';
 var read = 'read';
 var afterRead = 'afterRead'; // pure-logic modifiers
-
 var beforeMain = 'beforeMain';
 var main = 'main';
 var afterMain = 'afterMain'; // modifier with the purpose to write to the DOM (or write into a framework state)
-
 var beforeWrite = 'beforeWrite';
 var write = 'write';
 var afterWrite = 'afterWrite';
 var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
-
 exports.afterMain = afterMain;
 exports.afterRead = afterRead;
 exports.afterWrite = afterWrite;

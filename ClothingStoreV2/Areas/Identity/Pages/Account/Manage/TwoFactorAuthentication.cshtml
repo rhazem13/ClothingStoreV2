@@ -5,7 +5,6 @@
     ViewData["Title"] = "Two-factor authentication (2FA)";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
-
 <partial name="_StatusMessage" for="StatusMessage" />
 <h3>@ViewData["Title"]</h3>
 @{
@@ -35,7 +34,6 @@
                     <p>You should <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
                 </div>
             }
-
             if (Model.IsMachineRemembered)
             {
                 <form method="post" style="display: inline-block">
@@ -45,7 +43,6 @@
             <a asp-page="./Disable2fa" class="btn btn-primary">Disable 2FA</a>
             <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">Reset recovery codes</a>
         }
-
         <h4>Authenticator app</h4>
         @if (!Model.HasAuthenticator)
         {
@@ -65,7 +62,6 @@
         </div>
     }
 }
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

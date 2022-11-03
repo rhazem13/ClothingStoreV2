@@ -16,15 +16,12 @@ export var variationPlacements = /*#__PURE__*/basePlacements.reduce(function (ac
 export var placements = /*#__PURE__*/[].concat(basePlacements, [auto]).reduce(function (acc, placement) {
   return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
 }, []); // modifiers that need to read the DOM
-
 export var beforeRead = 'beforeRead';
 export var read = 'read';
 export var afterRead = 'afterRead'; // pure-logic modifiers
-
 export var beforeMain = 'beforeMain';
 export var main = 'main';
 export var afterMain = 'afterMain'; // modifier with the purpose to write to the DOM (or write into a framework state)
-
 export var beforeWrite = 'beforeWrite';
 export var write = 'write';
 export var afterWrite = 'afterWrite';

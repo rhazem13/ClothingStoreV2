@@ -1,17 +1,13 @@
 ﻿@using ClothingStoreV2.ViewModels
 @model List<ClothingStoreV2.ViewModels.PurchaseViewModel>
-
 @{
     ViewBag.Tite = "My Cart";
     var totalprice = 0;
 }
 <div class="row justify-content-center ">
-<div class="col-8">
-
+<div class="col-md-8 col-xs-12">
     @foreach (PurchaseViewModel item in Model)
     {
-
-
         if (item.quantity > 0)
         {
             var photoPath = "~/images/" + (item.photoPath ?? "notfound.png");
@@ -42,7 +38,6 @@
             @*<div class="row justify-content-center m-3">
                     <div class="col-sm-8">
                         <div class="card custom-card">
-
                             <img class="card-img-top imageBuyThumbnail" src="@photoPath" asp-append-version="true" />
                             <div class="card-body text-center">
                                 <h3>@item.itemLabel</h3>
@@ -51,7 +46,6 @@
                                 <h3>Quantity : <a class="btn btn-outline-dark" style="font-size: 20px;font-weight: 700" asp-action="decreaseQuantity" asp-route-id="@item.itemId">-</a> @item.quantity <a class="btn btn-dark" style="font-size: 20px;font-weight: 700" asp-action="increaseQuantity" asp-route-id="@item.itemId">+</a> </h3>
                                 <br /><h4>Total Price: @itemTotalPrice</h4>
                             </div>
-
                         </div>
                     </div>
                 </div>*@

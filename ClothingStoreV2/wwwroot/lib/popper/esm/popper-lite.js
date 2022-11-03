@@ -7,5 +7,4 @@ var defaultModifiers = [eventListeners, popperOffsets, computeStyles, applyStyle
 var createPopper = /*#__PURE__*/popperGenerator({
   defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
-
 export { createPopper, popperGenerator, defaultModifiers, detectOverflow };

@@ -21,11 +21,9 @@
   --#{$prefix}pagination-disabled-bg: #{$pagination-disabled-bg};
   --#{$prefix}pagination-disabled-border-color: #{$pagination-disabled-border-color};
   // scss-docs-end pagination-css-vars
-
   display: flex;
   @include list-unstyled();
 }
-
 .page-link {
   position: relative;
   display: block;
@@ -36,7 +34,6 @@
   background-color: var(--#{$prefix}pagination-bg);
   border: var(--#{$prefix}pagination-border-width) solid var(--#{$prefix}pagination-border-color);
   @include transition($pagination-transition);
-
   &:hover {
     z-index: 2;
     color: var(--#{$prefix}pagination-hover-color);
@@ -44,7 +41,6 @@
     background-color: var(--#{$prefix}pagination-hover-bg);
     border-color: var(--#{$prefix}pagination-hover-border-color);
   }
-
   &:focus {
     z-index: 3;
     color: var(--#{$prefix}pagination-focus-color);
@@ -52,7 +48,6 @@
     outline: $pagination-focus-outline;
     box-shadow: var(--#{$prefix}pagination-focus-box-shadow);
   }
-
   &.active,
   .active > & {
     z-index: 3;
@@ -60,7 +55,6 @@
     @include gradient-bg(var(--#{$prefix}pagination-active-bg));
     border-color: var(--#{$prefix}pagination-active-border-color);
   }
-
   &.disabled,
   .disabled > & {
     color: var(--#{$prefix}pagination-disabled-color);
@@ -69,19 +63,16 @@
     border-color: var(--#{$prefix}pagination-disabled-border-color);
   }
 }
-
 .page-item {
   &:not(:first-child) .page-link {
     margin-left: $pagination-margin-start;
   }
-
   @if $pagination-margin-start == (calc($pagination-border-width * -1)) {
     &:first-child {
       .page-link {
         @include border-start-radius(var(--#{$prefix}pagination-border-radius));
       }
     }
-
     &:last-child {
       .page-link {
         @include border-end-radius(var(--#{$prefix}pagination-border-radius));
@@ -94,16 +85,12 @@
     }
   }
 }
-
-
 //
 // Sizing
 //
-
 .pagination-lg {
   @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $pagination-border-radius-lg);
 }
-
 .pagination-sm {
   @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $pagination-border-radius-sm);
 }

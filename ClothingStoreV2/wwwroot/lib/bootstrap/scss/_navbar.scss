@@ -2,7 +2,6 @@
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
-
 .navbar {
   // scss-docs-start navbar-css-vars
   --#{$prefix}navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
@@ -26,7 +25,6 @@
   --#{$prefix}navbar-toggler-focus-width: #{$navbar-toggler-focus-width};
   --#{$prefix}navbar-toggler-transition: #{$navbar-toggler-transition};
   // scss-docs-end navbar-css-vars
-
   position: relative;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
@@ -34,7 +32,6 @@
   justify-content: space-between; // space out brand from logo
   padding: var(--#{$prefix}navbar-padding-y) var(--#{$prefix}navbar-padding-x);
   @include gradient-bg();
-
   // Because flex properties aren't inherited, we need to redeclare these first
   // few properties so that content nested within behave properly.
   // The `flex-wrap` property is inherited to simplify the expanded navbars
@@ -44,24 +41,19 @@
     align-items: center;
     justify-content: space-between;
   }
-
   > .container,
   > .container-fluid {
     @extend %container-flex-properties;
   }
-
   @each $breakpoint, $container-max-width in $container-max-widths {
     > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
       @extend %container-flex-properties;
     }
   }
 }
-
-
 // Navbar brand
 //
 // Used for brand, project, or site names.
-
 .navbar-brand {
   padding-top: var(--#{$prefix}navbar-brand-padding-y);
   padding-bottom: var(--#{$prefix}navbar-brand-padding-y);
@@ -70,19 +62,15 @@
   color: var(--#{$prefix}navbar-brand-color);
   text-decoration: if($link-decoration == none, null, none);
   white-space: nowrap;
-
   &:hover,
   &:focus {
     color: var(--#{$prefix}navbar-brand-hover-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 }
-
-
 // Navbar nav
 //
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
-
 .navbar-nav {
   // scss-docs-start navbar-nav-css-vars
   --#{$prefix}nav-link-padding-x: 0;
@@ -93,46 +81,36 @@
   --#{$prefix}nav-link-hover-color: var(--#{$prefix}navbar-hover-color);
   --#{$prefix}nav-link-disabled-color: var(--#{$prefix}navbar-disabled-color);
   // scss-docs-end navbar-nav-css-vars
-
   display: flex;
   flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-
   .show > .nav-link,
   .nav-link.active {
     color: var(--#{$prefix}navbar-active-color);
   }
-
   .dropdown-menu {
     position: static;
   }
 }
-
-
 // Navbar text
 //
 //
-
 .navbar-text {
   padding-top: $nav-link-padding-y;
   padding-bottom: $nav-link-padding-y;
   color: var(--#{$prefix}navbar-color);
-
   a,
   a:hover,
   a:focus  {
     color: var(--#{$prefix}navbar-active-color);
   }
 }
-
-
 // Responsive navbar
 //
 // Custom styles for responsive collapsing and toggling of navbar contents.
 // Powered by the collapse Bootstrap JavaScript plugin.
-
 // When collapsed, prevent the toggleable navbar contents from appearing in
 // the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
 // on the `.navbar` parent.
@@ -143,7 +121,6 @@
   // properly vertically. Can be easily overridden with flex utilities.
   align-items: center;
 }
-
 // Button for toggling the navbar when in its collapsed state
 .navbar-toggler {
   padding: var(--#{$prefix}navbar-toggler-padding-y) var(--#{$prefix}navbar-toggler-padding-x);
@@ -154,18 +131,15 @@
   border: var(--#{$prefix}border-width) solid var(--#{$prefix}navbar-toggler-border-color); // remove default button style
   @include border-radius(var(--#{$prefix}navbar-toggler-border-radius));
   @include transition(var(--#{$prefix}navbar-toggler-transition));
-
   &:hover {
     text-decoration: none;
   }
-
   &:focus {
     text-decoration: none;
     outline: 0;
     box-shadow: 0 0 0 var(--#{$prefix}navbar-toggler-focus-width);
   }
 }
-
 // Keep as a separate element so folks can easily override it with another icon
 // or image file as needed.
 .navbar-toggler-icon {
@@ -178,12 +152,10 @@
   background-position: center;
   background-size: 100%;
 }
-
 .navbar-nav-scroll {
   max-height: var(--#{$prefix}scroll-height, 75vh);
   overflow-y: auto;
 }
-
 // scss-docs-start navbar-expand-loop
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
@@ -191,39 +163,31 @@
   @each $breakpoint in map-keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
-
     // stylelint-disable-next-line scss/selector-no-union-class-name
     &#{$infix} {
       @include media-breakpoint-up($next) {
         flex-wrap: nowrap;
         justify-content: flex-start;
-
         .navbar-nav {
           flex-direction: row;
-
           .dropdown-menu {
             position: absolute;
           }
-
           .nav-link {
             padding-right: var(--#{$prefix}navbar-nav-link-padding-x);
             padding-left: var(--#{$prefix}navbar-nav-link-padding-x);
           }
         }
-
         .navbar-nav-scroll {
           overflow: visible;
         }
-
         .navbar-collapse {
           display: flex !important; // stylelint-disable-line declaration-no-important
           flex-basis: auto;
         }
-
         .navbar-toggler {
           display: none;
         }
-
         .offcanvas {
           // stylelint-disable declaration-no-important
           position: static;
@@ -238,11 +202,9 @@
           @include box-shadow(none);
           @include transition(none);
           // stylelint-enable declaration-no-important
-
           .offcanvas-header {
             display: none;
           }
-
           .offcanvas-body {
             display: flex;
             flex-grow: 0;
@@ -255,15 +217,12 @@
   }
 }
 // scss-docs-end navbar-expand-loop
-
 // Navbar themes
 //
 // Styles for switching between navbars with light or dark background.
-
 .navbar-light {
   @include deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
 }
-
 .navbar-dark {
   --#{$prefix}navbar-color: #{$navbar-dark-color};
   --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};

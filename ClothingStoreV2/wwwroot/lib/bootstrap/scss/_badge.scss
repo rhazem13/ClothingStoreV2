@@ -2,7 +2,6 @@
 //
 // Requires one of the contextual, color modifier classes for `color` and
 // `background-color`.
-
 .badge {
   // scss-docs-start badge-css-vars
   --#{$prefix}badge-padding-x: #{$badge-padding-x};
@@ -12,7 +11,6 @@
   --#{$prefix}badge-color: #{$badge-color};
   --#{$prefix}badge-border-radius: #{$badge-border-radius};
   // scss-docs-end badge-css-vars
-
   display: inline-block;
   padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
   @include font-size(var(--#{$prefix}badge-font-size));
@@ -24,13 +22,11 @@
   vertical-align: baseline;
   @include border-radius(var(--#{$prefix}badge-border-radius));
   @include gradient-bg();
-
   // Empty badges collapse automatically
   &:empty {
     display: none;
   }
 }
-
 // Quick fix for badges in buttons
 .btn .badge {
   position: relative;

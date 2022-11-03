@@ -18,17 +18,13 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/popper/umd/popper.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-
 </head>
-<body>  
+<body>
     <div id="page-container">
         <header style="z-index: 10;" class="active">
-
             <div class="logo ">
-
                 <a style="text-decoration: none" asp-controller="home" asp-action="index"><h2 style="padding-top: 10px;">Escanor</h2></a>
             </div>
-
             <div class="navigation">
                 <input type="checkbox" id="nav-checkbox">
                 <label for="nav-checkbox" class="nav-toggle">
@@ -36,13 +32,10 @@
                     <img src="~/images/close.png" alt="close menu" class="close">
                 </label>
                 <ul class="nav-menu">
-
-
                     @if (SignInManager.IsSignedIn(User))
                     {
                         @if (!User.IsInRole("admin"))
                         {
-
                             @if (!userDatumRepository.userFilled(User.FindFirstValue(ClaimTypes.NameIdentifier)))
                             {
                                 <li class="nav-item">
@@ -61,7 +54,6 @@
                             <li class="nav-item">
                                 <a class="nav-link " asp-controller="Item" asp-action="CreateItem">Create Items</a>
                             </li>
-
                         }
                         <li class="nav-item">
                             <a id="manage" class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Account <i class="fa fa-user"></i></a>
@@ -71,12 +63,8 @@
                                 <button id="logout" type="submit" class="nav-link">Logout <i class="fa fa-sign-out-alt"></i></button>
                             </form>
                             <a id="logout-link" class="nav-link" href="#" onclick="document.getElementById('logoutForm').submit()">Logout <i class="fa fa-sign-out-alt"></i></a>
-
                             @*<a class="nav-link " id="logout" type="submit" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout  <i class="fa fa-sign-out-alt"></i></a>*@
-
                         </li>
-
-
                     }
                     else
                     {
@@ -96,78 +84,71 @@
                             <a class="dropdown-item " id="Category3" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="3">JEANS</a>
                             <a class="dropdown-item " id="Category4" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="4">SPORTSWEAR</a>
                             <a class="dropdown-item " id="Category5" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="5">SHOES</a>
-
                         </div>
                     </li>
                 </ul>
             </div>
-
         </header>
-
         <!--<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <div class="container">
-    <a class="navbar-brand " asp-controller="Home" asp-action="Index">ESCANOR</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+        <a class="navbar-brand " asp-controller="Home" asp-action="Index">ESCANOR</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>-->
         @*<form asp-controller="Home" asp-action="All" class=" d-none d-md-none d-lg-block d-xl-block">
-            <input type="text" placeholder="Search" name="SearchString" />
-            <button type="submit" class="fa fa-search" style="color: white;"></button>
-        </form>*@
+                <input type="text" placeholder="Search" name="SearchString" />
+                <button type="submit" class="fa fa-search" style="color: white;"></button>
+            </form>*@
         <!--<div class="collapse navbar-collapse" id="navbarColor01">
-        <partial name="_LoginPartial" />
-    </div>
-    </div>
-
-    </nav>-->
+            <partial name="_LoginPartial" />
+        </div>
+        </div>
+        </nav>-->
         @*<nav class="navbar mb-3 navbar-expand-sm fixed-top" style="margin-top: 40px;">
-            <div class="container">
-                <button class="btn btn-dark d-block d-md-block d-lg-none d-xl-none" type="button" data-bs-toggle="collapse"
-                        data-bs-target=".navbar-collapse"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <button class="btn btn-dark d-block d-md-block d-lg-none d-xl-none" data-bs-toggle="collapse"
-                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <form asp-controller="Home" asp-action="All">
-                            <input type="text" placeholder="Search" name="SearchString" />
-                            <button type="submit" class="fa fa-search" style="color: white;"></button>
-                        </form>
+                <div class="container">
+                    <button class="btn btn-dark d-block d-md-block d-lg-none d-xl-none" type="button" data-bs-toggle="collapse"
+                            data-bs-target=".navbar-collapse"
+                            aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <button class="btn btn-dark d-block d-md-block d-lg-none d-xl-none" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <form asp-controller="Home" asp-action="All">
+                                <input type="text" placeholder="Search" name="SearchString" />
+                                <button type="submit" class="fa fa-search" style="color: white;"></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between text-white">
+                        <ul class="navbar-nav flex-grow-1 justify-content-center navCat">
+                            <li class="nav-item ">
+                                <a class="nav-link active firstnav" id="Home" asp-controller="Home" asp-action="All">All</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " id="Category1" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="1">SUITS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " id="Category2" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="2">SHIRTS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " id="Category3" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="3">JEANS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " id="Category4" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="4">SPORTSWEAR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " id="Category5" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="5">SHOES</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between text-white">
-                    <ul class="navbar-nav flex-grow-1 justify-content-center navCat">
-                        <li class="nav-item ">
-                            <a class="nav-link active firstnav" id="Home" asp-controller="Home" asp-action="All">All</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " id="Category1" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="1">SUITS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " id="Category2" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="2">SHIRTS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " id="Category3" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="3">JEANS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " id="Category4" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="4">SPORTSWEAR</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " id="Category5" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="5">SHOES</a>
-                        </li>
-
-
-
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
+            </nav>*@
         <!--</header>-->
         <div id="content-wrap" class="mycontent">
             <div @*style="margin-top: 80px;"*@>
@@ -178,96 +159,130 @@
                 </main>
             </div>
         </div>
-
-
         @await RenderSectionAsync("Scripts", required: false)
 
 
 
-        <footer class="footer-14398">
-
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-md-3">
-                        <a asp-action="Index" asp-controller="Home" class="footer-site-logo">ESCANOR</a>
-                        <p class=" d-md-block d-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit officiis corporis optio natus. </p>
+        @*<footer class="footer-14398">
+                <div class="container">
+                    <div class="row mb-5">
+                        <div class="col-md-3">
+                            <a asp-action="Index" asp-controller="Home" class="footer-site-logo">ESCANOR</a>
+                            <p class=" d-md-block d-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit officiis corporis optio natus. </p>
+                        </div>
+                        <div class="col-md-2 ms-auto ">
+                            <h3>Shop</h3>
+                            <ul class="list-unstyled links">
+                                <li><a href="#">Sell online</a></li>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">Examples</a></li>
+                                <li><a href="#">Website editors</a></li>
+                                <li><a href="#">Online retail</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 ms-auto d-md-block d-none">
+                            <h3>Press</h3>
+                            <ul class="list-unstyled links">
+                                <li><a href="#">Events</a></li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">Awards</a></li>
+                                <li><a href="#">Testimonials</a></li>
+                                <li><a href="#">Online retail</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 ms-auto  d-md-block d-none">
+                            <h3>About</h3>
+                            <ul class="list-unstyled links">
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Career</a></li>
+                                <li><a href="#">Contacts</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-2 ms-auto ">
-                        <h3>Shop</h3>
-                        <ul class="list-unstyled links">
-                            <li><a href="#">Sell online</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Examples</a></li>
-                            <li><a href="#">Website editors</a></li>
-                            <li><a href="#">Online retail</a></li>
-                        </ul>
+                    <div class="row mb-4">
+                        <div class="col-12 pb-4">
+                            <div class="line"></div>
+                        </div>
+                        <div class="col-md-6 text-md-start">
+                            <ul class="list-unstyled link-menu nav-left">
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Code of Conduct</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <ul class="list-unstyled social nav-right">
+                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-2 ms-auto d-md-block d-none">
-                        <h3>Press</h3>
-                        <ul class="list-unstyled links">
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Awards</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                            <li><a href="#">Online retail</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 ms-auto  d-md-block d-none">
-                        <h3>About</h3>
-                        <ul class="list-unstyled links">
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="#">Contacts</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12 pb-4">
-                        <div class="line"></div>
-                    </div>
-                    <div class="col-md-6 text-md-start">
-                        <ul class="list-unstyled link-menu nav-left">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Code of Conduct</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 text-md-end">
-                        <ul class="list-unstyled social nav-right">
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row  d-md-block d-none">
-                    <div class="col-md-7">
-                        <p><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, fuga. Ex at maxime eum odio quibusdam pariatur expedita explicabo harum! Consectetur ducimus delectus nemo, totam odit!</small></p>
+                    <div class="row  d-md-block d-none">
+                        <div class="col-md-7">
+                            <p><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, fuga. Ex at maxime eum odio quibusdam pariatur expedita explicabo harum! Consectetur ducimus delectus nemo, totam odit!</small></p>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-
-        </footer>
-
-
-
-
+            </footer>*@
     </div>
-
+    <footer class=" bg-primary customDark  py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <h1 class=" text-light">Escanor</h1>
+                    <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Features</h5>
+                    <ul style="text-decoration: none !important; " class="list-unstyled text-small">
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Cool stuff</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Random feature</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Team feature</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Stuff for developers</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Another one</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Last time</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Resource</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Resource name</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Another resource</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Final resource</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Business</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Education</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Government</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Gaming</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>About</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Team</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Locations</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Privacy</a></li>
+                        <li><a style="text-decoration: none" class="text-muted" href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
-
 @if (ViewData["Active"] != null)
 {
     <script type="text/javascript">
     document.getElementById("@ViewData["Active"]").classList.add("activenavcat");
-   
-        </script>
+    </script>
 }

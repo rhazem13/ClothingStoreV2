@@ -7,7 +7,6 @@
   width: 100vw;
   height: 100vh;
   background-color: $backdrop-bg;
-
   // Fade for backdrop
   &.fade { opacity: 0; }
   &.show { opacity: $backdrop-opacity; }

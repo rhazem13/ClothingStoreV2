@@ -8,14 +8,11 @@ until we get to the top window object. This list is what we attach scroll listen
 to, because if any of these parent elements scroll, we'll need to re-calculate the
 reference element's position.
 */
-
 export default function listScrollParents(element, list) {
   var _element$ownerDocumen;
-
   if (list === void 0) {
     list = [];
   }
-
   var scrollParent = getScrollParent(element);
   var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
   var win = getWindow(scrollParent);

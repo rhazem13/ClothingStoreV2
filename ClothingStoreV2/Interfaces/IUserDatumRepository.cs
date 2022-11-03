@@ -1,5 +1,4 @@
 ﻿using ClothingStoreV2.Models;
-
 namespace ClothingStoreV2.Interfaces
 {
     public interface IUserDatumRepository
@@ -7,6 +6,5 @@ namespace ClothingStoreV2.Interfaces
         UserDatum Create(UserDatum userDatum);
         string getAspUserId(string username);
         public bool userFilled(string identityid);
-
     }
 }

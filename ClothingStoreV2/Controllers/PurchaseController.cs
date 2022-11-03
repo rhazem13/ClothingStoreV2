@@ -5,7 +5,6 @@ using ClothingStoreV2.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
 namespace ClothingStoreV2.Controllers
 {
     public class PurchaseController : Controller
@@ -13,15 +12,12 @@ namespace ClothingStoreV2.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IPurchaseRepository _purchaseRepository;
         private readonly IUserDatumRepository _userDatumRepository;
-
         public PurchaseController(UserManager<IdentityUser> userManager,IPurchaseRepository purchaseRepository,IUserDatumRepository userDatumRepository)
         {
             _userManager = userManager;
             _purchaseRepository = purchaseRepository;
             _userDatumRepository = userDatumRepository;
         }
-
-
         [Authorize]
         public async Task<IActionResult> Add(int id, short quantity)
         {
@@ -30,26 +26,28 @@ namespace ClothingStoreV2.Controllers
             {
                 return RedirectToAction("FillData", "UserDatum");
             }
+
             int userId = _purchaseRepository.GetUserId(userIdentityId);
             bool haspurchase = await _purchaseRepository.HasPurchase(userIdentityId);
+            int purchaseId=-1;
             if (!haspurchase)
             {
                 Purchase purchase = new Purchase
                 {
-                    PurchaseDate = DateTime.Now,
+                    PurchaseDate =DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc),
                     UserId = userId,
                     TotalPrice = 0,
                     InProgress = true
-
                 };
-                _purchaseRepository.Add(purchase);
+                purchase = await _purchaseRepository.Add(purchase);
+                purchaseId = purchase.Id;
             }
-
-            int purchaseId = await _purchaseRepository.getPurchaseId(userId);
+            if(purchaseId==-1){
+             purchaseId = await _purchaseRepository.getPurchaseId(userId);
+            }
             _purchaseRepository.addItemsToPurchase(purchaseId,id,quantity);
             return RedirectToAction("MyPurchases", "Purchase");
         }
-
         public async Task<ViewResult> MyPurchases()
         {
             var userIdentityId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -63,7 +61,6 @@ namespace ClothingStoreV2.Controllers
                     UserId = userId,
                     TotalPrice = 0,
                     InProgress = true
-
                 };
                 _purchaseRepository.Add(purchase);
             }
@@ -84,28 +81,22 @@ namespace ClothingStoreV2.Controllers
             }
             return View(purchaseViewModelList);
         }
-
         public async Task<IActionResult> increaseQuantity(int id)
         {
             var userIdentityId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             int userId = _purchaseRepository.GetUserId(userIdentityId);
             int purchaseId = await _purchaseRepository.getPurchaseId(userId);
-
             _purchaseRepository.changeCount(purchaseId ,id, true);
-
             return RedirectToAction("MyPurchases");
         }
-
         public async Task<IActionResult> decreaseQuantity(int id)
         {
             var userIdentityId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             int userId = _purchaseRepository.GetUserId(userIdentityId);
             int purchaseId = await _purchaseRepository.getPurchaseId(userId);
             _purchaseRepository.changeCount(purchaseId ,id, false);
-
             return RedirectToAction("MyPurchases");
         }
-
         public async Task<IActionResult> CheckOut()
         {
             var userIdentityId = User.FindFirstValue(ClaimTypes.NameIdentifier);

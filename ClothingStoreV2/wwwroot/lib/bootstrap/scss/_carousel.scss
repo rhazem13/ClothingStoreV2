@@ -10,22 +10,18 @@
 //    slide in its in-transition state. Only one of these occurs at a time.
 // 5. .carousel-item-next.carousel-item-start and .carousel-item-prev.carousel-item-end
 //    is the upcoming slide in transition.
-
 .carousel {
   position: relative;
 }
-
 .carousel.pointer-event {
   touch-action: pan-y;
 }
-
 .carousel-inner {
   position: relative;
   width: 100%;
   overflow: hidden;
   @include clearfix();
 }
-
 .carousel-item {
   position: relative;
   display: none;
@@ -35,45 +31,36 @@
   backface-visibility: hidden;
   @include transition($carousel-transition);
 }
-
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
   display: block;
 }
-
 /* rtl:begin:ignore */
 .carousel-item-next:not(.carousel-item-start),
 .active.carousel-item-end {
   transform: translateX(100%);
 }
-
 .carousel-item-prev:not(.carousel-item-end),
 .active.carousel-item-start {
   transform: translateX(-100%);
 }
-
 /* rtl:end:ignore */
-
-
 //
 // Alternate transitions
 //
-
 .carousel-fade {
   .carousel-item {
     opacity: 0;
     transition-property: opacity;
     transform: none;
   }
-
   .carousel-item.active,
   .carousel-item-next.carousel-item-start,
   .carousel-item-prev.carousel-item-end {
     z-index: 1;
     opacity: 1;
   }
-
   .active.carousel-item-start,
   .active.carousel-item-end {
     z-index: 0;
@@ -81,12 +68,9 @@
     @include transition(opacity 0s $carousel-transition-duration);
   }
 }
-
-
 //
 // Left/right controls for nav
 //
-
 .carousel-control-prev,
 .carousel-control-next {
   position: absolute;
@@ -105,7 +89,6 @@
   border: 0;
   opacity: $carousel-control-opacity;
   @include transition($carousel-control-transition);
-
   // Hover/focus state
   &:hover,
   &:focus {
@@ -123,7 +106,6 @@
   right: 0;
   background-image: if($enable-gradients, linear-gradient(270deg, rgba($black, .25), rgba($black, .001)), null);
 }
-
 // Icons for within
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -134,7 +116,6 @@
   background-position: 50%;
   background-size: 100% 100%;
 }
-
 /* rtl:options: {
   "autoRename": true,
   "stringMap":[ {
@@ -149,12 +130,10 @@
 .carousel-control-next-icon {
   background-image: escape-svg($carousel-control-next-icon-bg);
 }
-
 // Optional indicator pips/controls
 //
 // Add a container (such as a list) with the following class and add an item (ideally a focusable control,
 // like a button) with data-bs-target for each slide your carousel holds.
-
 .carousel-indicators {
   position: absolute;
   right: 0;
@@ -169,7 +148,6 @@
   margin-bottom: 1rem;
   margin-left: $carousel-control-width;
   list-style: none;
-
   [data-bs-target] {
     box-sizing: content-box;
     flex: 0 1 auto;
@@ -189,17 +167,13 @@
     opacity: $carousel-indicator-opacity;
     @include transition($carousel-indicator-transition);
   }
-
   .active {
     opacity: $carousel-indicator-active-opacity;
   }
 }
-
-
 // Optional captions
 //
 //
-
 .carousel-caption {
   position: absolute;
   right: (100% - $carousel-caption-width) * .5;
@@ -210,19 +184,15 @@
   color: $carousel-caption-color;
   text-align: center;
 }
-
 // Dark mode carousel
-
 .carousel-dark {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: $carousel-dark-control-icon-filter;
   }
-
   .carousel-indicators [data-bs-target] {
     background-color: $carousel-dark-indicator-active-bg;
   }
-
   .carousel-caption {
     color: $carousel-dark-caption-color;
   }

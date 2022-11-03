@@ -5,6 +5,5 @@ export default function isScrollParent(element) {
       overflow = _getComputedStyle.overflow,
       overflowX = _getComputedStyle.overflowX,
       overflowY = _getComputedStyle.overflowY;
-
   return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
 }

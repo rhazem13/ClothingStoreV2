@@ -1,5 +1,4 @@
 import computeOffsets from "../utils/computeOffsets.js";
-
 function popperOffsets(_ref) {
   var state = _ref.state,
       name = _ref.name;
@@ -14,8 +13,6 @@ function popperOffsets(_ref) {
     placement: state.placement
   });
 } // eslint-disable-next-line import/no-unused-modules
-
-
 export default {
   name: 'popperOffsets',
   enabled: true,

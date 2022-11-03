@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace ClothingStoreV2.Models
 {
     public partial class UserDatum
@@ -9,7 +8,6 @@ namespace ClothingStoreV2.Models
         {
             Purchases = new HashSet<Purchase>();
         }
-
         public int Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
@@ -22,7 +20,6 @@ namespace ClothingStoreV2.Models
         public bool? Gender { get; set; }
         public string? Phone { get; set; }
         public string? IdentityId { get; set; }
-
         public virtual ICollection<Purchase> Purchases { get; set; }
     }
 }

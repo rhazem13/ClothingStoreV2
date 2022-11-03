@@ -10,7 +10,6 @@
                 var activeId = ViewBag.CategoryId;
             }
             <form asp-controller="Home" asp-action="All" style="width: 100%" class="align-content-center text-center">
-
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="What are you looking for?" aria-label="What are you looking for?" name="SearchString" aria-describedby="button-addon2">
                     <button type="submit" class="btn btn-primary " id="button-addon2">Search</button>
@@ -51,7 +50,6 @@
             </div>
         </div>
         <div class="col-lg-9 col-12">
-
             <div class="card-group">
                 @foreach (var item in Model)
                 {
@@ -76,20 +74,16 @@
                             {
                                 <a class="btn btn-danger" asp-controller="Item" asp-action="EditItem" asp-route-id="@item.Id">Edit</a>
                                 <a class="btn btn-danger" asp-controller="Item" asp-action="DeleteItem" asp-route-id="@item.Id">Delete</a>
-
                             }
                         </div>
                     </div>
-
                 }
             </div>
-
             @{
                 var prevDisabled = !Model.PreviousPage ? "disabled" : "";
                 var nextDisabled = !Model.NextPage ? "disabled" : "";
                 var isActive = "";
             }
-
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center ">
                     <li class="page-item @prevDisabled"><a class="page-link @prevDisabled" asp-action="BrowseCategory" asp-route-pageNumber="@(Model.PageIndex-1)">&laquo;</a></li>
@@ -101,11 +95,9 @@
                         }
                         <li class="page-item @isActive"><a class="page-link" asp-action="BrowseCategory" asp-route-pageNumber="@i">@i</a></li>
                         isActive = "";
-
                     }
                     <li class="page-item @nextDisabled"><a class="page-link" asp-action="BrowseCategory" asp-route-pageNumber="@(Model.PageIndex+1)">&raquo;</a></li>
                 </ul>
             </nav>
         </div>
     </div>
-

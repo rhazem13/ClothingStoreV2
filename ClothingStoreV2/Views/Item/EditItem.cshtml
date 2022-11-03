@@ -2,13 +2,10 @@
 @{
     ViewBag.Title = "Edit Item";
     var photoPath = "~/images/" + (Model.ExistingPhotoPath ?? "notfound.png");
-
 }
-
 <form enctype="multipart/form-data" asp-controller="Item" asp-action="EditItem" class="mt-3" method="post">
     <input hidden asp-for="Id" />
     <input hidden asp-for="ExistingPhotoPath" />
-
     <div class="form-group row">
         <label asp-for="ItemLabel">Item Label</label>
         <div class="col-sm-10">
@@ -34,14 +31,12 @@
         <option value="5">Shoes</option>
     </select>-->
             <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "CategoryLabel"))"></select>
-
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
         <div class="col-sm-10">
             <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
-
             <div class="custom-file">
                 <input multiple asp-for="Photo" class="form-control custom-file-input" />
                 <label class="custom-file-label">Choose File...</label>
@@ -54,7 +49,6 @@
     <div>
         <button type="submit" class="btn btn-primary">Update</button>
         <a asp-controller="Home" asp-action="Index" class="btn btn-primary">cancel</a>
-
     </div>
     @section Scripts {
         <script>
@@ -68,8 +62,6 @@
                         } else if (files.length == 1) {
                             fileLabel.html(files[0].name);
                         }
-
-
                     });
             })
         </script>}

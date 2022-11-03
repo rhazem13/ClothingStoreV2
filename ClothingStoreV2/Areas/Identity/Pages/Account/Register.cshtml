@@ -2,14 +2,12 @@
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
+ 
+    
 }
-
-
 <div class="justify-content-center align-content-center  align-items-center align-self-center">
-    <h1 class="text-center">@ViewData["Title"]</h1>
-
     <div class="justify-content-center align-content-center align-items-center">
-        <form id="registerForm" style="display: table; margin: 0 auto;" asp-route-returnUrl="/UserDatum/FillData" method="post">
+        <form id="registerForm" style="display: table; margin: 0 auto;" asp-route-returnUrl="~/Home/All/1"  method="post">
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -34,7 +32,6 @@
         </form>
     </div>
 </div>
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

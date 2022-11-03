@@ -10,7 +10,6 @@ namespace ClothingStoreV2.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IUserDatumRepository _userDatumRepository;
-
         public UserDatumController(UserManager<IdentityUser> userManager,IUserDatumRepository userDatumRepository)
         {
             _userManager = userManager;
@@ -18,24 +17,21 @@ namespace ClothingStoreV2.Controllers
         }
         public IActionResult Index()
         {
-
             return View();
         }
-
         [HttpGet]
         public ViewResult FillData()
         {
-
             return View();
         }
-
         [HttpPost]
         public IActionResult FillData(UserDatum userDatum)
         {
             string myid = User.FindFirstValue(ClaimTypes.NameIdentifier);
             userDatum.IdentityId=myid;
             _userDatumRepository.Create(userDatum);
-            return RedirectToAction("Index","home");
+           
+            return RedirectToAction("All","Home",1);
         }
     }
 }

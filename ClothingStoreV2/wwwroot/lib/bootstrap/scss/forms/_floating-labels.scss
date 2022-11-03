@@ -1,13 +1,11 @@
 .form-floating {
   position: relative;
-
   > .form-control,
   > .form-control-plaintext,
   > .form-select {
     height: $form-floating-height;
     line-height: $form-floating-line-height;
   }
-
   > label {
     position: absolute;
     top: 0;
@@ -23,15 +21,12 @@
     transform-origin: 0 0;
     @include transition($form-floating-transition);
   }
-
   > .form-control,
   > .form-control-plaintext {
     padding: $form-floating-padding-y $form-floating-padding-x;
-
     &::placeholder {
       color: transparent;
     }
-
     &:focus,
     &:not(:placeholder-shown) {
       padding-top: $form-floating-input-padding-t;
@@ -43,12 +38,10 @@
       padding-bottom: $form-floating-input-padding-b;
     }
   }
-
   > .form-select {
     padding-top: $form-floating-input-padding-t;
     padding-bottom: $form-floating-input-padding-b;
   }
-
   > .form-control:focus,
   > .form-control:not(:placeholder-shown),
   > .form-control-plaintext,
@@ -65,7 +58,6 @@
       transform: $form-floating-label-transform;
     }
   }
-
   > .form-control-plaintext {
     ~ label {
       border-width: $input-border-width 0; // Required to properly position label text - as explained above

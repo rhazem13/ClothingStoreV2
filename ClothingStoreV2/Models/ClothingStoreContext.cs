@@ -3,24 +3,19 @@ using System.Collections.Generic;
 using ClothingStoreV2.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
 namespace ClothingStoreV2.Models
 {
     public partial class ClothingStoreContext : ClothingStore_IdentityContext
     {
-       
-
         public ClothingStoreContext(DbContextOptions<ClothingStoreContext> options)
             : base(options)
         {
         }
-
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Item> Items { get; set; } = null!;
         public virtual DbSet<Purchase> Purchases { get; set; } = null!;
         public virtual DbSet<PurchaseItem> PurchaseItems { get; set; } = null!;
         public virtual DbSet<UserDatum> UserData { get; set; } = null!;
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
             if (!optionsBuilder.IsConfigured)
@@ -34,7 +29,6 @@ namespace ClothingStoreV2.Models
                 );
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -42,77 +36,55 @@ namespace ClothingStoreV2.Models
             {
                 entity.Property(e => e.CategoryLabel).HasMaxLength(64);
             });
-
             modelBuilder.Entity<Item>(entity =>
             {
                 entity.Property(e => e.ItemLabel).HasMaxLength(50);
-
                 entity.Property(e => e.PhotoPath).HasMaxLength(260);
-
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
-
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.CategoryId)
                     .HasConstraintName("FK__Items__CategoryI__286302EC");
             });
-
             modelBuilder.Entity<Purchase>(entity =>
             {
                // entity.Property(e => e.PurchaseDate).HasColumnType("datetime");
-
                 entity.Property(e => e.TotalPrice).HasColumnType("decimal(18, 0)");
-
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Purchases)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("FK__Purchases__UserI__2B3F6F97");
             });
-
             modelBuilder.Entity<PurchaseItem>(entity =>
             {
                 entity.HasKey(e => new { e.PurchaseId, e.ItemId })
                     .HasName("PK__Purchase__CC2D838651A53020");
-
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
-
                 entity.HasOne(d => d.Item)
                     .WithMany(p => p.PurchaseItems)
                     .HasForeignKey(d => d.ItemId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__PurchaseI__ItemI__2F10007B");
-
                 entity.HasOne(d => d.Purchase)
                     .WithMany(p => p.PurchaseItems)
                     .HasForeignKey(d => d.PurchaseId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__PurchaseI__Purch__2E1BDC42");
             });
-
             modelBuilder.Entity<UserDatum>(entity =>
             {
                 entity.Property(e => e.Address1).HasMaxLength(95);
-
                 entity.Property(e => e.Address2).HasMaxLength(95);
-
                 entity.Property(e => e.City).HasMaxLength(189);
-
                 entity.Property(e => e.Email).HasMaxLength(254);
-
                 entity.Property(e => e.FirstName).HasMaxLength(64);
-
                 entity.Property(e => e.IdentityId).HasMaxLength(450);
-
                 entity.Property(e => e.LastName).HasMaxLength(64);
-
                 entity.Property(e => e.Phone).HasMaxLength(50);
-
                 entity.Property(e => e.ZipCode).HasMaxLength(18);
             });
-
             OnModelCreatingPartial(modelBuilder);
         }
-
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

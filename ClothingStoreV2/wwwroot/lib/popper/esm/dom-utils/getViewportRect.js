@@ -10,18 +10,15 @@ export default function getViewportRect(element, strategy) {
   var height = html.clientHeight;
   var x = 0;
   var y = 0;
-
   if (visualViewport) {
     width = visualViewport.width;
     height = visualViewport.height;
     var layoutViewport = isLayoutViewport();
-
     if (layoutViewport || !layoutViewport && strategy === 'fixed') {
       x = visualViewport.offsetLeft;
       y = visualViewport.offsetTop;
     }
   }
-
   return {
     width: width,
     height: height,

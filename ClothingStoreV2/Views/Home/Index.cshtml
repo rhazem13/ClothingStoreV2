@@ -5,11 +5,9 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @inject IUserDatumRepository userDatumRepository
-
 @{
     Layout = "";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,15 +21,11 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/popper/umd/popper.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-
-
 </head>
 <body>
     <div id="page-container">
         <header style="z-index: 3;">
-
             <div class="logo ">
-
                 <h2 style="padding-top: 10px;">Escanor</h2>
             </div>
             <div class="navigation">
@@ -41,13 +35,10 @@
                     <img src="~/images/close.png" alt="close menu" class="close">
                 </label>
                 <ul class="nav-menu">
-
-
                     @if (SignInManager.IsSignedIn(User))
                     {
                         @if (!User.IsInRole("admin"))
                         {
-
                             @if (!userDatumRepository.userFilled(User.FindFirstValue(ClaimTypes.NameIdentifier)))
                             {
                                 <li class="nav-item">
@@ -66,7 +57,6 @@
                             <li class="nav-item">
                                 <a class="nav-link " asp-controller="Item" asp-action="CreateItem">Create Items</a>
                             </li>
-
                         }
                         <li class="nav-item">
                             <a id="manage" class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Account <i class="fa fa-user"></i></a>
@@ -76,12 +66,8 @@
                                 <button id="logout" type="submit" class="nav-link">Logout <i class="fa fa-sign-out-alt"></i></button>
                             </form>
                             <a id="logout-link" class="nav-link" href="#">Logout <i class="fa fa-sign-out-alt"></i></a>
-
                             @*<a class="nav-link " id="logout" type="submit" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout  <i class="fa fa-sign-out-alt"></i></a>*@
-
                         </li>
-
-
                     }
                     else
                     {
@@ -101,7 +87,6 @@
                             <a class="dropdown-item " id="Category3" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="3">JEANS</a>
                             <a class="dropdown-item " id="Category4" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="4">SPORTSWEAR</a>
                             <a class="dropdown-item " id="Category5" asp-controller="Home" asp-action="BrowseCategory" asp-route-id="5">SHOES</a>
-
                         </div>
                     </li>
                 </ul>
@@ -112,11 +97,9 @@
             <h3>HIGH QUALITY ClOTHING FOR MEN</h3>
             <a asp-controller="Home" asp-action="ALL" asp-route-id="1">start shopping</a>
         </div>
-        <div class="content">
-
-            @*<div class="slider">
+    <div class="content">
+        @*<div class="slider">
             <div id="main-slider" class="carousel slide" data-bs-ride="carousel">
-
                 <div class="carousel-inner">
                     <h1>HIGH QUALITY <span>SUITS FOR MEN</span></h1>
                     <div class="overlay"></div>
@@ -129,170 +112,139 @@
                     <div class="carousel-item">
                         <img src="~/images/crsl6.jpg" class="d-block w-100" alt="...">
                     </div>
-
                 </div>
             </div>
         </div>*@
-
-            @*<button class="btn btn-primary">hello</button>*@
-            <div class="container">
-
-                @*<img src="~/images/indexfirst.jpg" style="max-width: 100%;"/>*@
-
-                <hr class="divider" />
-
-                <div class=" justify-content-center m-3">
-                    <div class="card border-1 custom-card " style="padding: 0;">
-                        <div class="row ">
-                            <div class="col m-auto    text-md-start text-center">
-                                <img class="card-img-top " style="width: 300px; height: auto" src="~/images/indexthird.webp" />
-                            </div>
-                            <div class="col m-auto w-auto">
-                                <div class="card-body text-center align-self-center">
-                                    <h3>
-                                        SHOP DRESS SHIRTS
-                                    </h3>
-                                    <h5>
-                                        ALL COLLAR AND CUFF STYLES
-
-                                    </h5><br />
-                                    <a class="btn btn-primary" asp-action="BrowseCategory" asp-route-id="2">SHOP NOW</a>
-                                </div>
+        @*<button class="btn btn-primary">hello</button>*@
+        <div class="container">
+            @*<img src="~/images/indexfirst.jpg" style="max-width: 100%;"/>*@
+            <hr class="divider" />
+            <div class=" justify-content-center m-3">
+                <div class="card border-1 custom-card " style="padding: 0;">
+                    <div class="row ">
+                        <div class="col m-auto    text-md-start text-center">
+                            <img class="card-img-top " style="width: 300px; height: auto" src="~/images/indexthird.webp" />
+                        </div>
+                        <div class="col m-auto w-auto">
+                            <div class="card-body text-center align-self-center">
+                                <h3>
+                                    SHOP DRESS SHIRTS
+                                </h3>
+                                <h5>
+                                    ALL COLLAR AND CUFF STYLES
+                                </h5><br />
+                                <a class="btn btn-primary" asp-action="BrowseCategory" asp-route-id="2">SHOP NOW</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <hr class="divider" />
-
-
-                @*<img src="~/images/indexforth.jpg" class="img-fluid" style="max-width: 100%;"/>*@
-
-
-                <!-- Services-->
-                <section class="page-section" id="services">
-                    <div class="container px-4 px-lg-5">
-                        <h2 class="text-center mt-0">At Your Service</h2>
-                        <hr class="divider" />
-                        <div class="row gx-4 gx-lg-5">
-                            <div class="col-lg-3 col-md-6 text-center">
-                                <div class="mt-5">
-                                    <div class="mb-2"><i class="fa-solid fa-gem fs-1 text-primary"></i></div>
-                                    <h3 class="h4 mb-2">High Quality</h3>
-                                    <p class="text-muted mb-0">Our Items are updated regularly to keep them bug free!</p>
-                                </div>
+            </div>
+            <hr class="divider" />
+            @*<img src="~/images/indexforth.jpg" class="img-fluid" style="max-width: 100%;"/>*@
+            <!-- Services-->
+            <section class="page-section" id="services">
+                <div class="container px-4 px-lg-5">
+                    <h2 class="text-center mt-0">At Your Service</h2>
+                    <hr class="divider" />
+                    <div class="row gx-4 gx-lg-5">
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="fa-solid fa-gem fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">High Quality</h3>
+                                <p class="text-muted mb-0">Our Items are updated regularly to keep them bug free!</p>
                             </div>
-                            <div class="col-lg-3 col-md-6 text-center">
-                                <div class="mt-5">
-                                    <div class="mb-2"><i class="fa-solid fa-laptop fs-1 text-primary"></i></div>
-                                    <h3 class="h4 mb-2">Shop Online</h3>
-                                    <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
-                                </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="fa-solid fa-laptop fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">Shop Online</h3>
+                                <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
                             </div>
-                            <div class="col-lg-3 col-md-6 text-center">
-                                <div class="mt-5">
-                                    <div class="mb-2"><i class="fa-solid fa-globe fs-1 text-primary"></i></div>
-                                    <h3 class="h4 mb-2">Deliver Anywhere</h3>
-                                    <p class="text-muted mb-0">You can use this project as is, or you can make changes!</p>
-                                </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="fa-solid fa-globe fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">Deliver Anywhere</h3>
+                                <p class="text-muted mb-0">You can use this project as is, or you can make changes!</p>
                             </div>
-                            <div class="col-lg-3 col-md-6 text-center">
-                                <div class="mt-5">
-                                    <div class="mb-2"><i class="fa-solid fa-heart fs-1 text-primary"></i></div>
-                                    <h3 class="h4 mb-2">Made with Love</h3>
-                                    <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
-                                </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="fa-solid fa-heart fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">Made with Love</h3>
+                                <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
                             </div>
                         </div>
                     </div>
-                </section>                        <hr class="divider" />
-
-                <div class="text-center" style="padding-top: 50px;">
-                    <h4>Our social networks</h4>
-                    <div style="font-size: 40px;">
-                        <a href="https://www.facebook.com/HazemRg/"><i class="fa-brands fa-facebook DarkBrands"></i></a>
-                        <a href="https://twitter.com/HazemRagaab">
-                            <i class="fa-brands fa-twitter DarkBrands"></i>
-                        </a>
-                        <a href="https://www.instagram.com/hazemragabb/"><i class="fa-brands fa-instagram DarkBrands"></i></a>
-                        <a href="https://www.youtube.com/channel/UC4vClvcmVpSVNS0m0FdUTWw"><i class="fa-brands fa-youtube DarkBrands"></i></a>
-                        <a href="https://www.linkedin.com/in/hazem-ragab-889247204/"><i class="fa-brands fa-linkedin DarkBrands"></i></a>
-                    </div>
+                </div>
+            </section>                        <hr class="divider" />
+            <div class="text-center" style="padding-top: 50px;">
+                <h4>Our social networks</h4>
+                <div style="font-size: 40px;">
+                    <a href="https://www.facebook.com/HazemRg/"><i class="fa-brands fa-facebook DarkBrands"></i></a>
+                    <a href="https://twitter.com/HazemRagaab">
+                        <i class="fa-brands fa-twitter DarkBrands"></i>
+                    </a>
+                    <a href="https://www.instagram.com/hazemragabb/"><i class="fa-brands fa-instagram DarkBrands"></i></a>
+                    <a href="https://www.youtube.com/channel/UC4vClvcmVpSVNS0m0FdUTWw"><i class="fa-brands fa-youtube DarkBrands"></i></a>
+                    <a href="https://www.linkedin.com/in/hazem-ragab-889247204/"><i class="fa-brands fa-linkedin DarkBrands"></i></a>
                 </div>
             </div>
-            @*<footer class="footer-14398">
-
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-md-3">
-                        <a asp-action="Index" asp-controller="Home" class="footer-site-logo">ESCANOR</a>
-                        <p class=" d-md-block d-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit officiis corporis optio natus. </p>
-                    </div>
-                    <div class="col-md-2 ms-auto ">
-                        <h3>Shop</h3>
-                        <ul class="list-unstyled links">
-                            <li><a href="#">Sell online</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Examples</a></li>
-                            <li><a href="#">Website editors</a></li>
-                            <li><a href="#">Online retail</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 ms-auto d-md-block d-none">
-                        <h3>Press</h3>
-                        <ul class="list-unstyled links">
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Awards</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                            <li><a href="#">Online retail</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 ms-auto  d-md-block d-none">
-                        <h3>About</h3>
-                        <ul class="list-unstyled links">
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="#">Contacts</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12 pb-4">
-                        <div class="line"></div>
-                    </div>
-                    <div class="col-md-6 text-md-start">
-                        <ul class="list-unstyled link-menu nav-left">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Code of Conduct</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 text-md-end">
-                        <ul class="list-unstyled social nav-right">
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row  d-md-block d-none">
-                    <div class="col-md-7">
-                        <p><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, fuga. Ex at maxime eum odio quibusdam pariatur expedita explicabo harum! Consectetur ducimus delectus nemo, totam odit!</small></p>
-                    </div>
-                </div>
-
-            </div>
-
-        </footer>*@
         </div>
       
-
-        <script>
+    </div>
+    
+    
+    
+    <footer class=" bg-primary customDark  py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <h1 class=" text-light">Escanor</h1>
+                    <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Features</h5>
+                    <ul style="text-decoration: none !important; " class="list-unstyled text-small">
+                        <li ><a style="text-decoration: none" class="text-muted" href="#">Cool stuff</a></li>
+                        <li><a  style="text-decoration: none" class="text-muted" href="#">Random feature</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Team feature</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Stuff for developers</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Another one</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Last time</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Resource</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Resource name</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Another resource</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Final resource</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Business</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Education</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Government</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Gaming</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>About</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Team</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Locations</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Privacy</a></li>
+                        <li><a style="text-decoration: none"  class="text-muted" href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
             $(document).ready(function () {
                 $(window).bind('scroll',
                     function () {

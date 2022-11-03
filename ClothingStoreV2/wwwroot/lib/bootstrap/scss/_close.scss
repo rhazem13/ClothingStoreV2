@@ -2,7 +2,6 @@
 // iOS requires the button element instead of an anchor tag.
 // If you want the anchor version, it requires `href="#"`.
 // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
-
 .btn-close {
   box-sizing: content-box;
   width: $btn-close-width;
@@ -13,20 +12,17 @@
   border: 0; // for button elements
   @include border-radius();
   opacity: $btn-close-opacity;
-
   // Override <a>'s hover style
   &:hover {
     color: $btn-close-color;
     text-decoration: none;
     opacity: $btn-close-hover-opacity;
   }
-
   &:focus {
     outline: 0;
     box-shadow: $btn-close-focus-shadow;
     opacity: $btn-close-focus-opacity;
   }
-
   &:disabled,
   &.disabled {
     pointer-events: none;
@@ -34,7 +30,6 @@
     opacity: $btn-close-disabled-opacity;
   }
 }
-
 .btn-close-white {
   filter: $btn-close-white-filter;
 }

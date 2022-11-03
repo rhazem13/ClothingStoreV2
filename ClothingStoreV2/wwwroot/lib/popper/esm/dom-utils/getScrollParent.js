@@ -7,10 +7,8 @@ export default function getScrollParent(node) {
     // $FlowFixMe[incompatible-return]: assume body is always available
     return node.ownerDocument.body;
   }
-
   if (isHTMLElement(node) && isScrollParent(node)) {
     return node;
   }
-
   return getScrollParent(getParentNode(node));
 }

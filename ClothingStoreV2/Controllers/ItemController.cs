@@ -1,9 +1,11 @@
-﻿using ClothingStoreV2.Interfaces;
+﻿using System.Security.Claims;
+using ClothingStoreV2.Interfaces;
 using ClothingStoreV2.Models;
 using ClothingStoreV2.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 
 namespace ClothingStoreV2.Controllers
 {
@@ -11,18 +13,21 @@ namespace ClothingStoreV2.Controllers
     {
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
         private readonly IItemRepository itemRepository;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IUserDatumRepository _userDatumRepository;
 
         public ItemController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
-            IItemRepository itemRepository)
+            IItemRepository itemRepository,SignInManager<IdentityUser> signInManager,IUserDatumRepository userDatumRepository)
         {
             this.hostingEnvironment = hostingEnvironment;
             this.itemRepository = itemRepository;
+            _signInManager = signInManager;
+            _userDatumRepository = userDatumRepository;
         }
         public IActionResult Index()
         {
             return RedirectToAction("Index","Home");
         }
-
         [Authorize(Roles = "admin")]
         [HttpGet]
         public ViewResult CreateItem()
@@ -47,12 +52,9 @@ namespace ClothingStoreV2.Controllers
                 };
                 itemRepository.Add(item);
                 return RedirectToAction("Index","Home");
-
             }
-
             return View("Index");
         }
-
         [Authorize(Roles = "admin")]
         [HttpGet]
         public ViewResult EditItem(int id)
@@ -69,7 +71,6 @@ namespace ClothingStoreV2.Controllers
             };
             return View(itemEditViewModel);
         }
-
         [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult EditItem(ItemEditViewModel model)
@@ -88,19 +89,25 @@ namespace ClothingStoreV2.Controllers
                             model.ExistingPhotoPath);
                         System.IO.File.Delete(filePath);
                     }
-
                     item.PhotoPath = ProcessUploadedFile(model);
                 }
-
                 itemRepository.Update(item);
                 return RedirectToAction("Index","Home");
             }
             return View(model);
         }
-
         [HttpGet]
-        public ViewResult Buy(int id)
+        public IActionResult Buy(int id)
         {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return Redirect("~/Identity/Account/Login");
+            }
+            var userIdentityId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!_userDatumRepository.userFilled(userIdentityId))
+            {
+                return RedirectToAction("FillData", "UserDatum");
+            }
             Item item = itemRepository.Get(id);
             ItemBuyViewModel itemBuyViewModel = new ItemBuyViewModel
             {
@@ -117,7 +124,6 @@ namespace ClothingStoreV2.Controllers
             string uniqueFileName = null;
             if (model.Photo != null)
             {
-
                 string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
@@ -125,12 +131,9 @@ namespace ClothingStoreV2.Controllers
                 {
                     model.Photo.CopyTo(fileStream);
                 }
-
             }
-
             return uniqueFileName;
         }
-
         public IActionResult DeleteItem(int id)
         {
             if (itemRepository.Delete(id))
@@ -142,6 +145,5 @@ namespace ClothingStoreV2.Controllers
                 return RedirectToAction("InvalidDelete", "Error");
             }
         }
-       
     }
 }

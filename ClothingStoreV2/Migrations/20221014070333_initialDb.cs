@@ -1,9 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-
 #nullable disable
-
 namespace ClothingStoreV2.Migrations
 {
     public partial class initialDb : Migration
@@ -23,7 +21,6 @@ namespace ClothingStoreV2.Migrations
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
@@ -48,7 +45,6 @@ namespace ClothingStoreV2.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
-
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
@@ -62,7 +58,6 @@ namespace ClothingStoreV2.Migrations
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                 });
-
             migrationBuilder.CreateTable(
                 name: "UserData",
                 columns: table => new
@@ -85,7 +80,6 @@ namespace ClothingStoreV2.Migrations
                 {
                     table.PrimaryKey("PK_UserData", x => x.Id);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
@@ -106,7 +100,6 @@ namespace ClothingStoreV2.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
@@ -127,7 +120,6 @@ namespace ClothingStoreV2.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
                 columns: table => new
@@ -147,7 +139,6 @@ namespace ClothingStoreV2.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
                 columns: table => new
@@ -171,7 +162,6 @@ namespace ClothingStoreV2.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
                 columns: table => new
@@ -191,7 +181,6 @@ namespace ClothingStoreV2.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "Items",
                 columns: table => new
@@ -212,7 +201,6 @@ namespace ClothingStoreV2.Migrations
                         principalTable: "Categories",
                         principalColumn: "Id");
                 });
-
             migrationBuilder.CreateTable(
                 name: "Purchases",
                 columns: table => new
@@ -233,7 +221,6 @@ namespace ClothingStoreV2.Migrations
                         principalTable: "UserData",
                         principalColumn: "Id");
                 });
-
             migrationBuilder.CreateTable(
                 name: "PurchaseItems",
                 columns: table => new
@@ -257,95 +244,73 @@ namespace ClothingStoreV2.Migrations
                         principalTable: "Purchases",
                         principalColumn: "Id");
                 });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
-
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true);
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
                 table: "AspNetUserRoles",
                 column: "RoleId");
-
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
-
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
             migrationBuilder.CreateIndex(
                 name: "IX_Items_CategoryId",
                 table: "Items",
                 column: "CategoryId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_PurchaseItems_ItemId",
                 table: "PurchaseItems",
                 column: "ItemId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Purchases_UserId",
                 table: "Purchases",
                 column: "UserId");
         }
-
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
-
             migrationBuilder.DropTable(
                 name: "AspNetUserClaims");
-
             migrationBuilder.DropTable(
                 name: "AspNetUserLogins");
-
             migrationBuilder.DropTable(
                 name: "AspNetUserRoles");
-
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
             migrationBuilder.DropTable(
                 name: "PurchaseItems");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
             migrationBuilder.DropTable(
                 name: "Items");
-
             migrationBuilder.DropTable(
                 name: "Purchases");
-
             migrationBuilder.DropTable(
                 name: "Categories");
-
             migrationBuilder.DropTable(
                 name: "UserData");
         }

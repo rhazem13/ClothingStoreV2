@@ -1,7 +1,6 @@
 @each $color, $value in $theme-colors {
   .link-#{$color} {
     color: $value !important; // stylelint-disable-line declaration-no-important
-
     @if $link-shade-percentage != 0 {
       &:hover,
       &:focus {

@@ -1,41 +1,34 @@
 ﻿@page
 @model LoginModel
-
 @{
-    ViewData["Title"] = "Welcome Back";
-}
-<div class=" justify-content-center align-content-center  align-items-center align-self-center">
-        <h1 class="text-center">@ViewData["Title"]</h1>
-
+    ViewData["Title"] = "Log In";
+    var uri = new System.Uri(Request.Headers["Referer"].ToString());
+    var converted = uri.LocalPath.ToString();
+} <div class="row justify-content-center align-content-center  align-items-center align-self-center">
+    <div class=" col-md-4 col-sm-12 justify-content-center align-content-center  align-items-center align-self-center">
         <div class="justify-content-center align-content-center align-items-center">
-
-            <form id="account" method="post" style="display: table; margin: 0 auto;" class=" align-self-center ">
-                <h2>Use a local account.</h2>
-
-                <hr/>
+            <form id="account" method="post"  class=" align-self-center " asp-route-returnUrl="@converted">
+                <h2 class="text-center">Log In</h2>
+                <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true"/>
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                     <label asp-for="Input.Email" class="form-label"></label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
-                <br/>
+                <br />
                 <div class="form-floating ">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true"/>
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                     <label asp-for="Input.Password" class="form-label"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div>
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe" class="form-label">
-                            <input class="form-check-input" asp-for="Input.RememberMe"/>
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                        </label>
-                    </div>
+                </div><br />
+                <div  class="form-check">
+                        <input class="form-check-input" style="display: inline-block" type="checkbox" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
                 </div>
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn  btn-primary">Log in</button>
-                </div>
+                </div><br/>
                 <div>
                     <p>
                         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
@@ -49,6 +42,7 @@
                 </div>
             </form>
         </div>
+    </div>
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

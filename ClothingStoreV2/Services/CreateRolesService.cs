@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-
 namespace ClothingStoreV2.Services
 {
     public class CreateRolesService
     {
         private static RoleManager<IdentityRole> _roleManager;
-
         public CreateRolesService(RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
@@ -13,13 +11,11 @@ namespace ClothingStoreV2.Services
         public static async Task CreateRoles(IServiceProvider serviceProvider)
         {
             //
-            
             //
             //initializing custom roles 
             //var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             string[] roleNames = { "Admin", "Manager", "Member" };
             IdentityResult roleResult; 
-
             foreach (var roleName in roleNames)
             {
                 var roleExist = await _roleManager.RoleExistsAsync(roleName);

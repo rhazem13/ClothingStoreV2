@@ -7,12 +7,10 @@ import { clippingParents, reference, popper, bottom, top, right, basePlacements,
 import { isElement } from "../dom-utils/instanceOf.js";
 import mergePaddingObject from "./mergePaddingObject.js";
 import expandToHashMap from "./expandToHashMap.js"; // eslint-disable-next-line import/no-unused-modules
-
 export default function detectOverflow(state, options) {
   if (options === void 0) {
     options = {};
   }
-
   var _options = options,
       _options$placement = _options.placement,
       placement = _options$placement === void 0 ? state.placement : _options$placement,
@@ -43,7 +41,6 @@ export default function detectOverflow(state, options) {
   var popperClientRect = rectToClientRect(Object.assign({}, popperRect, popperOffsets));
   var elementClientRect = elementContext === popper ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
   // 0 or negative = within the clipping rect
-
   var overflowOffsets = {
     top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
     bottom: elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom,
@@ -51,7 +48,6 @@ export default function detectOverflow(state, options) {
     right: elementClientRect.right - clippingClientRect.right + paddingObject.right
   };
   var offsetData = state.modifiersData.offset; // Offsets can be applied only to the popper element
-
   if (elementContext === popper && offsetData) {
     var offset = offsetData[placement];
     Object.keys(overflowOffsets).forEach(function (key) {
@@ -60,6 +56,5 @@ export default function detectOverflow(state, options) {
       overflowOffsets[key] += offset[axis] * multiply;
     });
   }
-
   return overflowOffsets;
 }

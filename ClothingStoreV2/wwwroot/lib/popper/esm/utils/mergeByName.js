@@ -7,7 +7,6 @@ export default function mergeByName(modifiers) {
     }) : current;
     return merged;
   }, {}); // IE11 does not support Object.values
-
   return Object.keys(merged).map(function (key) {
     return merged[key];
   });
