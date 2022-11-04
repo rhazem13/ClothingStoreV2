@@ -35,7 +35,7 @@ If you liked the project or if ESCANOR helped you, please give a star ;)</p>
 - Repository	
 </p>
 
-<h2>Try it online</h2>
-I have set up a live online demo for you so you are able to test ESCANOR without local installation. Get a first impression and test all available features in the front- and in the backend.
-<a href="https://clothingstorev2.herokuapp.com/">ESCANOR</a><p>(Email:testaccount@gmail.com , Password:teST$%y3)</p>
+<h2>We are Online:</h2>
+<p>See the project running on</p>
+<a href="https://clothingstorev2.herokuapp.com/">heroku</a><br><p>(Email:testaccount@gmail.com , Password:teST$%y3)</p>
 
