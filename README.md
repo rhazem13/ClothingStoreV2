@@ -36,6 +36,6 @@ If you liked the project or if ESCANOR helped you, please give a star ;)</p>
 </p>
 
 <h2>We are Online:</h2>
-<p>See the project running on</p>
-<a href="https://clothingstorev2.herokuapp.com/">heroku</a><br><p>(Email:testaccount@gmail.com , Password:teST$%y3)</p>
+<p>See the project running on
+<a href="https://clothingstorev2.herokuapp.com/">heroku</a></p><br><p>(Email:testaccount@gmail.com , Password:teST$%y3)</p>
 
