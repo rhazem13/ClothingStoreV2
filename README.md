@@ -1,6 +1,6 @@
 <p align="center">
 	<a href="https://github.com/rhazem13/ClothingStoreV2">
-		<img src="assests/Screenshot 2022-11-04 193642.jpg" alt="Screen Shot">
+		<img src="assests/Screenshot 2022-11-04 200041.jpg" alt="Screen Shot">
 	</a>
 </p>
 <p align="center">
@@ -12,6 +12,11 @@
 
 The goal of this project is implement the most common used technologies and share with the technical community the best way to develop great applications with .NET
 
+</p>
+<p align="center">
+	<a href="https://github.com/rhazem13/ClothingStoreV2">
+		<img src="assests/Screenshot 2022-11-04 193642.jpg" alt="Screen Shot">
+	</a>
 </p>
 <h2>Give a Star! :star:</h2><p>
 If you liked the project or if ESCANOR helped you, please give a star ;)</p>
