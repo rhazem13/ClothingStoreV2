@@ -4,7 +4,7 @@
 	</a>
 </p>
 <p align="center">
-		<a href="#try-it-online">Try Online</a> ∙
+		<a href="https://clothingstorev2.herokuapp.com/">Try Online</a> ∙
 </p>
 <br/>
 <h2>What is the ESCANOR ?</h2><hr>
@@ -32,4 +32,5 @@ If you liked the project or if ESCANOR helped you, please give a star ;)</p>
 
 <h2>Try it online</h2>
 I have set up a live online demo for you so you are able to test ESCANOR without local installation. Get a first impression and test all available features in the front- and in the backend.
-<a href="">ESCANOR</a> (Email:testaccount@gmail.com , Pass:teST$%y3)
+<a href="https://clothingstorev2.herokuapp.com/">ESCANOR</a><p>(Email:testaccount@gmail.com , Password:teST$%y3)</p>
+
